@@ -1,0 +1,47 @@
+body {
+	background: #A0B0E0 url(../images/background.jpg) no-repeat;
+    padding-top: 70px; /* wymagany padding do .navbar-fixed-top*/
+}
+
+.navbar-fixed-top .nav {
+    padding: 15px 0;
+}
+
+.navbar-fixed-top .navbar-brand {
+    padding: 0 15px;
+}
+
+@media(min-width:768px) {
+    body {
+        padding-top: 100px; /* wymagany padding do .navbar-fixed-top*/
+    }
+
+    .navbar-fixed-top .navbar-brand {
+        padding: 15px 0;
+    }
+}
+
+@media only screen and (min-width : 768px) {
+    /* Make Navigation Toggle on Desktop Hover */
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+
+.panel,.panel-heading {
+  	border-radius:0;
+  	border-width:0;
+}
+
+.panel-heading {
+	color: #FFFFFF;
+}
+
+.search {
+	padding-top:8px;
+}

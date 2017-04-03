@@ -31,8 +31,8 @@ function getCalender($year = '',$month = '')
 	<div id="calender_section">
 		<h2>
         	<a href="javascript:void(0);" onclick="getCalendar('calendar_div','<?php echo date("Y",strtotime($date.' - 1 Month')); ?>','<?php echo date("m",strtotime($date.' - 1 Month')); ?>');">&lt;&lt;</a>
-            <select name="month_dropdown" class="month_dropdown dropdown"><?php echo getAllMonths($dateMonth); ?></select>
-			<select name="year_dropdown" class="year_dropdown dropdown"><?php echo getYearList($dateYear); ?></select>
+            <select name="month_dropdown_cal" class="month_dropdown_cal dropdown_cal"><?php echo getAllMonths($dateMonth); ?></select>
+			<select name="year_dropdown_cal" class="year_dropdown_cal dropdown_cal"><?php echo getYearList($dateYear); ?></select>
             <a href="javascript:void(0);" onclick="getCalendar('calendar_div','<?php echo date("Y",strtotime($date.' + 1 Month')); ?>','<?php echo date("m",strtotime($date.' + 1 Month')); ?>');">&gt;&gt;</a>
         </h2>
 		<div id="event_list" class="none"></div>
@@ -140,11 +140,11 @@ function getCalender($year = '',$month = '')
 			$('.date_cell').mouseleave(function(){
 				$(".date_popup_wrap").fadeOut();		
 			});
-			$('.month_dropdown').on('change',function(){
-				getCalendar('calendar_div',$('.year_dropdown').val(),$('.month_dropdown').val());
+			$('.month_dropdown_cal').on('change',function(){
+				getCalendar('calendar_div',$('.year_dropdown_cal').val(),$('.month_dropdown_cal').val());
 			});
-			$('.year_dropdown').on('change',function(){
-				getCalendar('calendar_div',$('.year_dropdown').val(),$('.month_dropdown').val());
+			$('.year_dropdown_cal').on('change',function(){
+				getCalendar('calendar_div',$('.year_dropdown_cal').val(),$('.month_dropdown_cal').val());
 			});
 			$(document).click(function(){
 				$('#event_list').slideUp('slow');

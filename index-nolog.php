@@ -182,8 +182,6 @@ error_reporting(E_ERROR);
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-	<!-- bootstrap hover menu -->
-	<script src="js/bootstrap-hover-dropdown.js"></script>
 
 </body>
 

@@ -48,7 +48,7 @@ include_once('functions-noad.php');
 							<ul class="dropdown-menu">
 								<li><a tabindex="-1" href="cal-noad.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a href="leagueoflegends_live.php" tabindex="-1" href="#">Na żywo</a></li>
+								<li><a tabindex="-1" href="leagueoflegends_live.html">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -85,6 +85,18 @@ include_once('functions-noad.php');
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
+                    <li>
+						<form class="search" action="./search.php" method="get">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Szukaj..." name="search">
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit" value="Szukaj">
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+					</li>
 					<li class="dropdown">
 							<a href="login.php">Zaloguj się</a>
 					</li>
@@ -113,8 +125,6 @@ include_once('functions-noad.php');
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-	<!-- bootstrap hover menu -->
-	<script src="js/bootstrap-hover-dropdown.js"></script>
 
 </body>
 

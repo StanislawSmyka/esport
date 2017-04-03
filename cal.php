@@ -86,6 +86,18 @@ include('lock-ad.php');
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
+                    <li>
+						<form class="search" action="./search.php" method="get">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Szukaj..." name="search">
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit" value="Szukaj">
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+					</li>
 					<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -103,27 +115,14 @@ include('lock-ad.php');
 
     <!-- tresc strony -->
     <div class="container">
-		<h1 class="page-header">Kalendarz</h1>
-		
-        <div class="no-gutter row">
-			</div>
-			<!-- poczatek najnowszych -->
-      		<div class="col-md-10">
+		<h1 class="page-header">Rozgrywki</h1>
+        <div class="col-md-12">
 				<div class="panel">
-					<div class="panel-heading" style="background-color:#555">Kalendarz</div>
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-12">
-									<?php echo getCalender(); ?>
-									<hr>
-								</div>
-							</div>
-						</div>
-               </div><!--/panel-->
-      		</div><!--koniec najnowszych-->
-      		
-      	</div> 
-  	</div>
+                    <div class="panel-body">
+                        <?php echo getCalender(); ?>
+                    </div>
+				</div>
+        </div>
     </div>
     <!-- /.container -->
 
@@ -132,9 +131,7 @@ include('lock-ad.php');
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-	<!-- bootstrap hover menu -->
-	<script src="js/bootstrap-hover-dropdown.js"></script>
-
+    
 </body>
 
 </html>

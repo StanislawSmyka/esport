@@ -83,6 +83,18 @@ include('lock-ad.php');
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
+                    <li>
+						<form class="search" action="./search.php" method="get">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Szukaj..." name="search">
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit" value="Szukaj">
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+					</li>
 					<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -126,7 +138,9 @@ include('lock-ad.php');
 								</div>
 							</div>
 						</div>
-</table>
+                </div>
+        </div>
+    </div>
     <!-- /.container -->
 
     <!-- jQuery -->
@@ -134,8 +148,6 @@ include('lock-ad.php');
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-	<!-- bootstrap hover menu -->
-	<script src="js/bootstrap-hover-dropdown.min.js"></script>
 
 </body>
 

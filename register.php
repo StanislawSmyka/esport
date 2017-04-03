@@ -110,6 +110,18 @@ if($result) {
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
+                    <li>
+						<form class="search" action="./search.php" method="get">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Szukaj..." name="search">
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit" value="Szukaj">
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+					</li>
 					<li class="dropdown">
 							<a href="login.php">Zaloguj się</a>
 					</li>
@@ -146,6 +158,7 @@ if($result) {
 				</div>
 				<div class="g-recaptcha" data-sitekey="6Lc-eA4UAAAAAOEEpL0uGoFFbvyCm7ink66POFkx"></div>
 				<button type="submit" class="btn btn-default">Zarejestruj</button>
+                </form>
             </div>
         </div>
     </div>

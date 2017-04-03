@@ -154,9 +154,6 @@ include('lock.php');
 					<div class="panel-heading" style="background-color:#111">Najpopularniejsze</div>   
 						<div class="panel-body">
 							<div class="media">
-								<a class="pull-left" href="#">
-								<img class="media-object" src="http://placehold.it/80/F0F0F0">
-								</a>
 								<div class="media-body">
 									<h5 class="media-heading"><a href="#" target="ext" class="pull-right"><i class="glyphicon glyphicon-share"></i></a> <a href="#"><strong>Mama winner!</strong></a></h5>
 									<small>Najstarszy gracz w histori CS:GO wygrywa MVP IEM!</small><br>
@@ -165,9 +162,6 @@ include('lock.php');
 							</div>
 							<hr>
 							<div class="media">
-								<a class="pull-left" href="#">
-								<img class="media-object" src="http://placehold.it/80/F0F0F0">
-								</a>
 								<div class="media-body">
 									<h5 class="media-heading"><a href="#" target="ext" class="pull-right"><i class="glyphicon glyphicon-share"></i></a> <a href="#"><strong>Guczmańskie technologie.</strong></a></h5>
 									<small>Niesławny streamer Jarosław "Gucz" Janczewski pokazuje na swoim streamie jak zrobić portal dla graczy.</small><br>
@@ -176,9 +170,6 @@ include('lock.php');
 							</div>
 							<hr>
 							<div class="media">
-								<a class="pull-left" href="#">
-								<img class="media-object" src="http://placehold.it/80/F0F0F0">
-								</a>
 								<div class="media-body">
 									<h5 class="media-heading"><a href="#" target="ext" class="pull-right"><i class="glyphicon glyphicon-share"></i></a> <a href="#"><strong>World Championship Tour 2016 Hearthstone</strong></a></h5>
 									<small>Szesnastka najbardziej wytrawnych karciarzy z całego globu walczy o chwałę, część puli nagród wynoszącej milion USD oraz tytuł mistrza nad mistrzami.</small><br>
@@ -198,8 +189,6 @@ include('lock.php');
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-	<!-- bootstrap hover menu -->
-	<script src="js/bootstrap-hover-dropdown.js"></script>
 
 </body>
 

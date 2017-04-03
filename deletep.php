@@ -98,6 +98,18 @@ header("location: panel-ad.php");
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
+                    <li>
+						<form class="search" action="./search.php" method="get">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Szukaj..." name="search">
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit" value="Szukaj">
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+					</li>
 					<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -116,43 +128,50 @@ header("location: panel-ad.php");
     <!-- tresc strony -->
     <div class="container">
         <div class="row">
-			<h1 class="page-header">Podaj id posta który chcesz usunąć</h1>
+			<h1 class="page-header">Usuwanie postów</h1>
             <div class="col-lg-4">
                 <form action="" method="post">
 				<div class="form-group">
-					<div class="controls">
-						<label>Podaj id</label>
+				    <div class="controls">
+				        <label>Podaj id</label>
 						<input type="text" name="id" class="form-control"/>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-default" value="submit">Wyślij</button>
-            </div> 
+				<button type="submit" class="btn btn-default" value="submit">Usuń</button>
+                </form>
+                <br/>
+            </div>
+        <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading" style="background-color:#555">Lista postów</div> 
+            <div class="panel-body">
+                <div class="row">
+				<div class="col-md-9">
+				        <?php
+									
+                        include_once('cms-delete.php');
+				        $obj = new simpleCMS();
+				        $obj->host = 'localhost';
+				        $obj->username = 'admin';
+				        $obj->password = 'pass';
+				        $obj->table = 'db';
+				        $obj->connect();
+									
+				        if ( $_POST )
+				            $obj->write($_POST);
+									
+				            echo $obj->display_public();
+									
+				        ?>
+				        <hr>
+                </div>
+				</div>
+            </div>
+        </div>
+        </div>
+        </div>
     </div>
-      		<div class="col-md-10">
-				<div class="panel">
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-12">
-									<?php
-									
-									  include_once('cms-delete.php');
-									  $obj = new simpleCMS();
-									  $obj->host = 'localhost';
-									  $obj->username = 'admin';
-									  $obj->password = 'pass';
-									  $obj->table = 'db';
-									  $obj->connect();
-									
-									  if ( $_POST )
-										$obj->write($_POST);
-									
-									  echo $obj->display_public();
-									
-									?>
-									<hr>
-								</div>
-							</div>
-						</div>
+    
     <!-- /.container -->
 
     <!-- jQuery -->
@@ -160,8 +179,6 @@ header("location: panel-ad.php");
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-	<!-- bootstrap hover menu -->
-	<script src="js/bootstrap-hover-dropdown.min.js"></script>
 
 </body>
 

@@ -38,7 +38,7 @@ include('lock.php');
                 </a>
             </div>
             <!-- nav linki w menu -->
-            <div class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="index.php">Strona główna</a>

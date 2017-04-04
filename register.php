@@ -16,14 +16,13 @@ $password = md5($pass);
 $query = "INSERT INTO user (id, username, passcode, email) VALUES('$id','$username', '$password', '$email')";
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 $query = NULL;
-echo "Bledny email";
 }	
 $result = mysqli_query($db, $query);
 
 if($result) {
   echo "Stworzono konto";
 } else {
-  echo "Nazwa uzytkownika juz istnieje" . mysql_error();
+  echo "błedny mail lub nazwa uzytkownika juz istnieje" . mysql_error();
 }
 }
 ?>

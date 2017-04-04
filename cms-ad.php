@@ -23,7 +23,7 @@ class simpleCMS {
 
     <div class="post">
     	<h2>
-    		$title
+    	<a href="readmore-ad.php?idp=$id">$title</a> 
     	</h2>
 	    <p>
 	      $bodytext
@@ -33,13 +33,7 @@ class simpleCMS {
 		</h6>
 		<h6>
 		$id
-		</h6>
-		<form action="readmore.php?idp=$id" method="POST"> 
-       <button>
-                 <input  type="hidden" name="pass">
-       </button>
-    </form>
-		
+		</h6>	
 	</div>
 
 ENTRY_DISPLAY;

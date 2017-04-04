@@ -5,12 +5,26 @@ session_start();
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 { 
-
 $myusername=mysqli_real_escape_string($db,$_POST['username']); 
 $mypass=mysqli_real_escape_string($db,$_POST['password']);
 $mypassword=md5($mypass);
+if ($myusername=='admin')
+{
+$sql="SELECT id FROM admin WHERE username='$myusername' and passcode='$mypassword'";
+$result=mysqli_query($db,$sql);
+$row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+$active=$row['active'];
+$count=mysqli_num_rows($result);
+if($count==1)
+{
+$_SESSION['myusername']="something";
+$_SESSION['login_user']=$myusername;
 
-
+header("location: panel-ad.php");
+}
+}
+else 
+{
 $sql="SELECT id FROM user WHERE username='$myusername' and passcode='$mypassword'";
 $result=mysqli_query($db,$sql);
 $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
@@ -26,6 +40,7 @@ header("location: index.php");
 else 
 {
 $error="Your Login Name or Password is invalid";
+}
 }
 }
 ?>
@@ -127,7 +142,6 @@ $error="Your Login Name or Password is invalid";
 					</li>
 					<li class="dropdown">
 							<a href="login.php">Zaloguj się</a>
-							<a href="login-ad.php">Zaloguj się NA ADMINA</a>
 					</li>
 				</ul>
             </div>

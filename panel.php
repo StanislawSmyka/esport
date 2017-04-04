@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ERROR);
-include('lock-ad.php');
+include('lock.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -16,21 +16,19 @@ class simpleCMS {
         $title = stripslashes($a['title']);
         $bodytext = stripslashes($a['bodytext']);
 		$id = stripslashes($a['id']);
+		$created = stripslashes($a['created']);
         $entry_display .= <<<ENTRY_DISPLAY
 
     <div class="post">
     	<h2>
-    		$title
+    	<a href="readmore.php?idp=$id">$title</a> 
     	</h2>
 	    <p>
 	      $bodytext
 	    </p>
-				<form action="readmore.php?idp=$id" method="POST"> 
-       <button>
-                 <input  type="hidden" name="pass" value="Więcej...">
-       </button>
-       <hr>
-    </form>
+		<h6>
+			$created
+		</h6>
 	</div>
 
 ENTRY_DISPLAY;

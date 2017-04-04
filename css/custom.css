@@ -15,7 +15,6 @@ body {
     body {
         padding-top: 100px; /* wymagany padding do .navbar-fixed-top*/
     }
-
     .navbar-fixed-top .navbar-brand {
         padding: 15px 0;
     }

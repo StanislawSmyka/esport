@@ -40,7 +40,7 @@ include('lock.php');
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="panel-ad.php">Strona główna</a>
+                        <a href="index.php">Strona główna</a>
                     </li>
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
@@ -135,7 +135,7 @@ include('lock.php');
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-md-12">
-									<p>Witaj w panelu użytkownika, tutaj możesz przejżeć swoje posty oraz zmienić hasło lub e-mail.</p><?php echo $login_session; ?>
+									<p>Witaj <?php echo $login_session; ?> w panelu użytkownika, tutaj możesz przejżeć swoje posty oraz zmienić hasło lub e-mail.</p>
 								</div>
 							</div>
 						</div>
@@ -144,7 +144,6 @@ include('lock.php');
       		
       	</div> 
   	</div>
-    </div>
     <!-- /.container -->
 
     <!-- jQuery -->
@@ -152,6 +151,8 @@ include('lock.php');
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <!-- Wymagane pola -->
+    <script src="js/required.js"></script>
 
 </body>
 

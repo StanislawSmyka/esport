@@ -102,6 +102,18 @@ $result = mysqli_query($db, $query);
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
+                    <li>
+						<form class="search" action="./search.php" method="get">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Szukaj..." name="search">
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit" value="Szukaj">
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+					</li>
 					<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -140,6 +152,9 @@ $result = mysqli_query($db, $query);
 							</div>
 						</div>
 						<p></p>
+                </div>
+          </div>
+    </div>
     <div class="container">
         <div class="row">
             <h1 class="page-header">Dodanie nowego </h1>
@@ -159,9 +174,10 @@ $result = mysqli_query($db, $query);
 				</div>
 				<div class="g-recaptcha" data-sitekey="6Lc-eA4UAAAAAOEEpL0uGoFFbvyCm7ink66POFkx"></div>
 				<button type="submit" class="btn btn-default">Dodaj</button>
+                </form>
+            </div>
             </div>
         </div>
-    </div>
 							<p></p>
 <div class="col-md-10">
 				<div class="panel">
@@ -183,6 +199,8 @@ $result = mysqli_query($db, $query);
 								</div>
 							</div>
 						</div>
+    </div>
+    </div>
     <!-- /.container -->
 
     <!-- jQuery -->
@@ -190,8 +208,8 @@ $result = mysqli_query($db, $query);
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-	<!-- bootstrap hover menu -->
-	<script src="js/bootstrap-hover-dropdown.min.js"></script>
+    <!-- Wymagane pola -->
+    <script src="js/required.js"></script>
 
 </body>
 </html>

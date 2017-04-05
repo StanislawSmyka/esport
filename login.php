@@ -89,7 +89,7 @@ $error="Your Login Name or Password is invalid";
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal.php">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-noad.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
 								<li><a href="leagueoflegends_live.html" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
@@ -170,7 +170,9 @@ $error="Your Login Name or Password is invalid";
 				</div>
 				<button type="submit" class="btn btn-default" value="submit">Wyślij</button>
 				<a href="register.php" class="btn btn-info" role="button">Zarejestruj się</a>
+                </form>
             </div> 
+    </div>
     </div>
     <!-- /.container -->
 
@@ -179,7 +181,9 @@ $error="Your Login Name or Password is invalid";
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
+    <!-- Wymagane pola -->
+    <script src="js/required.js"></script>
+    
 </body>
 
 </html>

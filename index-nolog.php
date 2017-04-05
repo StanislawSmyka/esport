@@ -176,7 +176,6 @@ error_reporting(E_ERROR);
             </div><!--koniec najpopularniejszych-->
       	</div> 
   	</div>
-    </div>
     <!-- /.container -->
 
     <!-- jQuery -->
@@ -184,6 +183,8 @@ error_reporting(E_ERROR);
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <!-- Wymagane pola -->
+    <script src="js/required.js"></script>
 
 </body>
 

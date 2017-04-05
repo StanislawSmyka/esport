@@ -154,6 +154,7 @@ header("location: panel-ad.php");
 				</div>
 				<div class="g-recaptcha" data-sitekey="6Lc-eA4UAAAAAOEEpL0uGoFFbvyCm7ink66POFkx"></div>
 				<button type="submit" class="btn btn-default">Dodaj</button>
+                </form>
             </div>
         </div>
     </div>
@@ -164,6 +165,9 @@ header("location: panel-ad.php");
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+        
+    <!-- Wymagane pola -->
+    <script src="js/required.js"></script>
 
 </body>
 </html>

@@ -70,7 +70,7 @@ if($result) {
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal.php">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-noad.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
 								<li><a href="leagueoflegends_live.html" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
@@ -158,6 +158,7 @@ if($result) {
 				<div class="g-recaptcha" data-sitekey="6Lc-eA4UAAAAAOEEpL0uGoFFbvyCm7ink66POFkx"></div>
 				<button type="submit" class="btn btn-default">Zarejestruj</button>
                 </form>
+                
             </div>
         </div>
     </div>
@@ -168,8 +169,8 @@ if($result) {
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    <!-- Sila hasla -->
-    <script src="js/strenght.js"></script>
+    <!-- Wymagane pola -->
+    <script src="js/required.js"></script>
 
 </body>
 </html>

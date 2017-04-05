@@ -41,14 +41,14 @@ include('lock-ad.php');
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="panel-ad.php">Strona główna</a>
+                        <a href="index.php">Strona główna</a>
                     </li>
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a tabindex="-1" href="cal.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a href="leagueoflegends_live.php" tabindex="-1" href="#">Na żywo</a></li>
+								<li><a href="leagueoflegends_live-ad.php" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -100,8 +100,6 @@ include('lock-ad.php');
 					<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" a href="panel.php">Opcje</a></li>
-								<li class="divider"></li>
 								<li><a tabindex="-1" a href="logout.php">Wyloguj</a></li>
 							</ul>
 					</li>
@@ -122,9 +120,7 @@ include('lock-ad.php');
 					<div class="panel-heading" style="background-color:#888">Opcje</div> 
 						<div class="panel-body">
 							<ul class="nav nav-stacked">
-							<li><a href="#">Lista postów</a></li>
 							<li><a href="addpost.php">Dodaj nowy post</a></li>
-							<li><a href="#">Dodaj nowy event</a></li>
 							<li><a href="deletep.php">Usuń post</a></li>
 							<li><a href="#">Zmień hasło</a></li>
 							</ul>
@@ -170,6 +166,8 @@ include('lock-ad.php');
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <!-- Wymagane pola -->
+    <script src="js/required.js"></script>
 
 </body>
 

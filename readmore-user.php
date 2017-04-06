@@ -118,71 +118,83 @@ $result = mysqli_query($db, $query);
     </nav>
 
     <!-- tresc strony -->
-	  <div class="container">
-      		<div class="col-md-10">
-				<div class="panel">
+	<div class="container">
+         <div class="col-md-12">
+                <div class="row">
+				    <div class="panel">
+					   <div class="panel-heading" style="background-color:#555">
+                           <?php
+                            $iddd = $_GET['idp'];
+                            $sql = "SELECT * FROM info Where id='$iddd'";
+                            $result =mysqli_query($db,$sql);
+                            while($row = mysqli_fetch_assoc($result)) {
+                                ?>
+                                <h3><?php echo $row['title']; ?></h3>
+                                <?php
+                            }
+                            ?>
+                        </div> 
 						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-12">
+							
 									<?php
 										$iddd = $_GET['idp'];									
 										$sql = "SELECT * FROM info Where id='$iddd'";
 										$result =mysqli_query($db,$sql);
 										while($row = mysqli_fetch_assoc($result)) {
 											?>
-											<h2><?php echo $row['title']; ?></h2>
 											<p><?php echo $row['bodytext']; ?></p>
+                                            <h6><span class="glyphicon glyphicon-calendar"></span><?php echo $row['created']; ?></h6>
 											<?php
 										}
 									 ?>
-									<hr>
-								</div>
-							</div>
-						</div>
-						<p></p>
-    <div class="container">
-        <div class="row">
-            <h1 class="page-header">Dodanie nowego </h1>
-            <div class="col-lg-4">
-                <form action="" method="post">
-				<div class="form-group">
-					<div class="controls">
-						<label>tytul:</label>
-						<input type="text" name="title" class="form-control"/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label>tresc:</label>
-					<div class="controls">
-						<textarea name="bodytext" id="bodytext"></textarea>
-					</div>
-				</div>
-				<div class="g-recaptcha" data-sitekey="6Lc-eA4UAAAAAOEEpL0uGoFFbvyCm7ink66POFkx"></div>
-				<button type="submit" class="btn btn-default">Dodaj</button>
-            </div>
-        </div>
+                        </div>
+                    </div>
+                    <ul class="pager">
+                        <li class="previous">
+                            <a href="index.php">← Powrót do postów</a>
+                    </ul>
+                    <div class="well">
+                    <h4>Zostaw komentarz</h4>
+                        <form role="form" class="clearfix">
+                            <div class="col-md-6 form-group">
+                                <label class="sr-only" for="name">Użytkownik</label>
+                                <input type="text" name="title" class="form-control" placeholder="Użytkownik">
+                            </div>
+ 
+                            <div class="col-md-12 form-group">
+                                <label class="sr-only" for="email">Komentarz</label>
+                                <textarea class="form-control" name="bodytext" id="bodytext" placeholder="Komentarz"></textarea>
+                            </div>
+ 
+                            <div class="col-md-12 form-group text-right">
+                                <button type="submit" class="btn btn-default">Dodaj</button>
+                            </div>
+ 
+                        </form>
+                    </div>
+					<?php 
+						$idda = $_GET['idp'];	
+						$sql = "SELECT * FROM comments Where id='$idda'";
+						$result =mysqli_query($db,$sql);
+                    ?>
+                    <ul id="comments" class="comments">
+						<?php
+                        while($row = mysqli_fetch_assoc($result)) {
+							?><li class="list-group-item">
+                                    <div class="clearfix">
+                                        <h4 class="pull-left"><?php echo $row['user']; ?></h4>
+                                    </div>
+                                    <p>
+                                        <em><?php echo $row['comment']; ?></em>
+                                    </p>
+                                </li>
+				            <?php
+				        }
+                    ?>
+                    </ul>
+             </div>
+         </div>
     </div>
-							<p></p>
-	<div class="col-md-10">
-				<div class="panel">
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-12">
-									<?php 
-										$idda = $_GET['idp'];	
-										$sql = "SELECT * FROM comments Where id='$idda'";
-										$result =mysqli_query($db,$sql);
-										while($row = mysqli_fetch_assoc($result)) {
-											?>
-											<h2><?php echo $row['user']; ?></h2>
-											<p><?php echo $row['comment']; ?></p>
-											<?php
-										}
-									 ?>
-									<hr>
-								</div>
-							</div>
-						</div>
     <!-- /.container -->
 
     <!-- jQuery -->

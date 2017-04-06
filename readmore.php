@@ -185,10 +185,11 @@ header("location: readmore.php?idp=$idp&count=$count");
 						$idda = $_GET['idp'];	
 						$sql = "SELECT * FROM comments Where id='$idda'";
 						$result =mysqli_query($db,$sql);
-						while($row = mysqli_fetch_assoc($result)) {
-							?>
-                            <ul id="comments" class="comments">
-                                <li class="list-group-item">
+                    ?>
+                    <ul id="comments" class="comments">
+						<?php
+                        while($row = mysqli_fetch_assoc($result)) {
+							?><li class="list-group-item">
                                     <div class="clearfix">
                                         <h4 class="pull-left"><?php echo $row['user']; ?></h4>
                                     </div>
@@ -196,10 +197,10 @@ header("location: readmore.php?idp=$idp&count=$count");
                                         <em><?php echo $row['comment']; ?></em>
                                     </p>
                                 </li>
-                            </ul>
 				            <?php
 				        }
                     ?>
+                    </ul>
              </div>
          </div>
     </div>

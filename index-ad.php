@@ -1,5 +1,5 @@
 <?php
-//streamy itp.
+error_reporting(E_ERROR);
 include('lock-ad.php');
 
 ?>
@@ -85,12 +85,12 @@ include('lock-ad.php');
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
-                    <li>
-						<form class="search" action="./search.php" method="get">
+					<li>
+						<form class="search">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Szukaj..." name="search">
+								<input type="text" class="form-control" placeholder="Szukaj">
 								<div class="input-group-btn">
-									<button class="btn btn-default" type="submit" value="Szukaj">
+									<button class="btn btn-default" type="submit">
 										<i class="glyphicon glyphicon-search"></i>
 									</button>
 								</div>
@@ -114,12 +114,80 @@ include('lock-ad.php');
 
     <!-- tresc strony -->
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-				<p><iframe src="https://player.twitch.tv/?channel=riotgames" allowfullscreen="allowfullscreen" frameborder="0" scrolling="no" height="500" width="70%"></iframe><iframe src="https://www.twitch.tv/riotgames/chat?popout=" frameborder="0" scrolling="no" height="500" width="30%"></p>
-            </div>
-        </div>
-    </div>
+		<h1 class="page-header">Wiadomości</h1>
+        <div class="no-gutter row">
+			<!-- poczatek najnowszych -->
+      		<div class="col-md-9">
+				<div class="panel">
+					<div class="panel-heading" style="background-color:#555">Najnowsze</div> 
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-12">
+									<?php
+									
+									  include_once('cms.php');
+									  $obj = new simpleCMS();
+
+									  /* CHANGE THESE SETTINGS FOR YOUR OWN DATABASE */
+									  $obj->host = 'localhost';
+									  $obj->username = 'test';
+									  $obj->password = 'pass';
+									  $obj->table = 'db';
+									  $obj->connect();
+									
+									  if ( $_POST )
+										$obj->write($_POST);
+									
+									  echo $obj->display_public();
+									
+									?>
+								</div>
+							</div>
+						</div>
+               </div><!--/panel-->
+            <ul class="pager">
+                <li class="previous">
+                    <a href="#">← Starsze</a>
+                </li>
+                <li class="next">
+                    <a href="#">Nowsze →</a>
+                </li>
+            </ul>
+      		</div><!--koniec najnowszych-->
+      		
+      		<!-- poczatek najpopularniejszych-->
+      		<div class="col-md-3" id="content">
+            	<div class="panel">
+					<div class="panel-heading" style="background-color:#111">Najpopularniejsze</div>   
+						<div class="panel-body">
+							<div class="media">
+								<div class="media-body">
+									<?php
+									
+									  include_once('cms.php');
+									  $obj = new comments();
+
+									  /* CHANGE THESE SETTINGS FOR YOUR OWN DATABASE */
+									  $obj->host = 'localhost';
+									  $obj->username = 'test';
+									  $obj->password = 'pass';
+									  $obj->table = 'db';
+									  $obj->connect();
+									
+									  if ( $_POST )
+										$obj->write($_POST);
+									
+									  echo $obj->display_public();
+									
+									?>
+                                    
+								</div>
+							</div>
+						</div><!--/panel-body-->
+                </div><!--/panel-->
+            </div><!--koniec najpopularniejszych-->
+      	</div> 
+  	</div>
     <!-- /.container -->
 
     <!-- jQuery -->
@@ -129,7 +197,6 @@ include('lock-ad.php');
     <script src="js/bootstrap.min.js"></script>
     <!-- Wymagane pola -->
     <script src="js/required.js"></script>
-    
-</body>
 
+</body>
 </html>

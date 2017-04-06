@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(E_ERROR);
 //Strona główna dla niezalgownaych użyktowników
 ?>
@@ -18,7 +19,6 @@ error_reporting(E_ERROR);
     <title>Esports - wszystkie rozgrywki w jednym miejscu.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -141,6 +141,14 @@ error_reporting(E_ERROR);
 							</div>
 						</div>
                </div><!--/panel-->
+            <ul class="pager">
+                <li class="previous">
+                    <a href="#">← Starsze</a>
+                </li>
+                <li class="next">
+                    <a href="#">Nowsze →</a>
+                </li>
+            </ul>
       		</div><!--koniec najnowszych-->
       		
       		<!-- poczatek najpopularniejszych-->
@@ -150,25 +158,25 @@ error_reporting(E_ERROR);
 						<div class="panel-body">
 							<div class="media">
 								<div class="media-body">
-									<h5 class="media-heading"><a href="#" target="ext" class="pull-right"><i class="glyphicon glyphicon-share"></i></a> <a href="#"><strong>Mama winner!</strong></a></h5>
-									<small>Najstarszy gracz w histori CS:GO wygrywa MVP IEM!</small><br>
-									<span class="badge">666</span>
-								</div>
-							</div>
-							<hr>
-							<div class="media">
-								<div class="media-body">
-									<h5 class="media-heading"><a href="#" target="ext" class="pull-right"><i class="glyphicon glyphicon-share"></i></a> <a href="#"><strong>Guczmańskie technologie.</strong></a></h5>
-									<small>Niesławny streamer Jarosław "Gucz" Janczewski pokazuje na swoim streamie jak zrobić portal dla graczy.</small><br>
-									<span class="badge">77</span>
-								</div>
-							</div>
-							<hr>
-							<div class="media">
-								<div class="media-body">
-									<h5 class="media-heading"><a href="#" target="ext" class="pull-right"><i class="glyphicon glyphicon-share"></i></a> <a href="#"><strong>World Championship Tour 2016 Hearthstone</strong></a></h5>
-									<small>Szesnastka najbardziej wytrawnych karciarzy z całego globu walczy o chwałę, część puli nagród wynoszącej milion USD oraz tytuł mistrza nad mistrzami.</small><br>
-									<span class="badge">1</span>
+									<?php
+									
+									  include_once('cms.php');
+									  $obj = new comments();
+
+									  /* CHANGE THESE SETTINGS FOR YOUR OWN DATABASE */
+									  $obj->host = 'localhost';
+									  $obj->username = 'test';
+									  $obj->password = 'pass';
+									  $obj->table = 'db';
+									  $obj->connect();
+									
+									  if ( $_POST )
+										$obj->write($_POST);
+									
+									  echo $obj->display_public();
+									
+									?>
+                                    
 								</div>
 							</div>
 						</div><!--/panel-body-->

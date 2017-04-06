@@ -20,7 +20,7 @@ if($count==1)
 $_SESSION['myusername']="something";
 $_SESSION['login_user']=$myusername;
 
-header("location: panel-ad.php");
+header("location: index-ad.php");
 }
 }
 else 

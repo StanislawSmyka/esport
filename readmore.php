@@ -1,11 +1,9 @@
 <?php
 //panel do dodawania postów
-error_reporting(E_ERROR);
 include('config.php');
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 $idp = $_GET['idp'];
-echo $idp;
 $q = "SELECT id FROM comments";
 $res = mysqli_query($db,$q);
 $rowsnum = $res->num_rows;
@@ -13,10 +11,14 @@ $id=$rowsnum+1;
 
 $title=mysqli_real_escape_string($db,$_POST['title']);
 $bodytext =mysqli_real_escape_string($db,$_POST['bodytext']);
-$created =  mysqli_real_escape_string($db,$t);
-$query = "INSERT INTO comments (number, id, user, comment) VALUES('$id','$idp', '$title', '$bodytext')";
+$created = mysqli_real_escape_string($db,$_POST['created']);
+$query = "INSERT INTO comments (number, id, user, comment) VALUES('$id','$idp', '$title', '$bodytext', '$created')";
 $result = mysqli_query($db, $query);
-
+$count = $_GET['count'];
+$count= $count+1;
+$query2 = "UPDATE info SET count='$count' WHERE id='$idp'";
+$results = mysqli_query($db, $query2);
+header("location: readmore.php?idp=$idp&count=$count");
 }
 ?>
 
@@ -63,7 +65,7 @@ $result = mysqli_query($db, $query);
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal.php">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-noad.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
 								<li><a href="leagueoflegends_live.html" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
@@ -125,7 +127,7 @@ $result = mysqli_query($db, $query);
     </nav>
 
     <!-- tresc strony -->
-	 <div class="container">
+	<div class="container">
          <div class="col-md-12">
                 <div class="row">
 				    <div class="panel">
@@ -150,58 +152,54 @@ $result = mysqli_query($db, $query);
 										while($row = mysqli_fetch_assoc($result)) {
 											?>
 											<p><?php echo $row['bodytext']; ?></p>
+                                            <h6><span class="glyphicon glyphicon-calendar"></span><?php echo $row['created']; ?></h6>
 											<?php
 										}
 									 ?>
                         </div>
                     </div>
-                    <div class="panel">
-                        <div class="panel-heading" style="background-color:#555">Skomentuj</div>
-                        <div class="panel-body">
-                        <div class="row">
-                        <div class="col-lg-4">
-                        <form action="" method="post">
-				            <div class="form-group">
-					           <div class="controls">
-						          <label>Użytkownik:</label>
-						          <input type="text" name="title" class="form-control"/>
-					           </div>
-				            </div>
-				            <div class="form-group">
-					           <label>treść:</label>
-					           <div class="controls">
-                                   <textarea rows="5" cols="50" name="bodytext" id="bodytext"></textarea>
-					           </div>
-				            </div>
-				            <div class="g-recaptcha" data-sitekey="6Lc-eA4UAAAAAOEEpL0uGoFFbvyCm7ink66POFkx"></div>
-				            <button type="submit" class="btn btn-default">Dodaj</button>
-                        </form>
-                        </div>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="panel">
-                            <div class="panel-heading" style="background-color:#555">Komentarze</div>
-                            <div class="panel-body">
-							<div class="row">
-								<div class="col-md-12">
-									<?php 
-										$idda = $_GET['idp'];	
-										$sql = "SELECT * FROM comments Where id='$idda'";
-										$result =mysqli_query($db,$sql);
-										while($row = mysqli_fetch_assoc($result)) {
-											?>
-											<h3>Użytkownik: <?php echo $row['user']; ?></h3>
-											<p>Treść: <?php echo $row['comment']; ?></p>
-											<hr>
-											<?php
-										}
-									 ?>
-									<hr>
-								</div>
-							</div>
+                    <ul class="pager">
+                        <li class="previous">
+                            <a href="index.php">← Powrót do postów</a>
+                    </ul>
+                    <div class="well">
+                    <h4>Zostaw komentarz</h4>
+                        <form role="form" class="clearfix">
+                            <div class="col-md-6 form-group">
+                                <label class="sr-only" for="name">Użytkownik</label>
+                                <input type="text" name="title" class="form-control" placeholder="Użytkownik">
                             </div>
+ 
+                            <div class="col-md-12 form-group">
+                                <label class="sr-only" for="email">Komentarz</label>
+                                <textarea class="form-control" name="bodytext" id="bodytext" placeholder="Komentarz"></textarea>
+                            </div>
+ 
+                            <div class="col-md-12 form-group text-right">
+                                <button type="submit" class="btn btn-default">Dodaj</button>
+                            </div>
+ 
+                        </form>
                     </div>
+					<?php 
+						$idda = $_GET['idp'];	
+						$sql = "SELECT * FROM comments Where id='$idda'";
+						$result =mysqli_query($db,$sql);
+						while($row = mysqli_fetch_assoc($result)) {
+							?>
+                            <ul id="comments" class="comments">
+                                <li class="list-group-item">
+                                    <div class="clearfix">
+                                        <h4 class="pull-left"><?php echo $row['user']; ?></h4>
+                                    </div>
+                                    <p>
+                                        <em><?php echo $row['comment']; ?></em>
+                                    </p>
+                                </li>
+                            </ul>
+				            <?php
+				        }
+                    ?>
              </div>
          </div>
     </div>

@@ -21,8 +21,7 @@ include('lock-ad.php');
 </head>
 
 <body>
-
-    <!-- nawigacja -->
+ <!-- nawigacja -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- mobilny wyglad -->
@@ -41,7 +40,7 @@ include('lock-ad.php');
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.php">Strona główna</a>
+                        <a href="index-ad.php">Strona główna</a>
                     </li>
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
@@ -85,12 +84,12 @@ include('lock-ad.php');
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
-                    <li>
-						<form class="search" action="./search.php" method="get">
+					<li>
+						<form class="search">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Szukaj..." name="search">
+								<input type="text" class="form-control" placeholder="Szukaj">
 								<div class="input-group-btn">
-									<button class="btn btn-default" type="submit" value="Szukaj">
+									<button class="btn btn-default" type="submit">
 										<i class="glyphicon glyphicon-search"></i>
 									</button>
 								</div>
@@ -100,6 +99,8 @@ include('lock-ad.php');
 					<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
+								<li><a tabindex="-1" a href="panel-ad.php">Opcje</a></li>
+								<li class="divider"></li>
 								<li><a tabindex="-1" a href="logout.php">Wyloguj</a></li>
 							</ul>
 					</li>

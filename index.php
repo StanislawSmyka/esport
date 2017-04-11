@@ -125,7 +125,7 @@ include('lock.php');
 								<div class="col-md-12">
 									<?php
 									
-									  include_once('cms.php');
+									  include_once('cms-user.php');
 									  $obj = new simpleCMS();
 
 									  /* CHANGE THESE SETTINGS FOR YOUR OWN DATABASE */
@@ -141,30 +141,23 @@ include('lock.php');
 									  echo $obj->display_public();
 									
 									?>
+									<hr>
 								</div>
 							</div>
 						</div>
                </div><!--/panel-->
-            <ul class="pager">
-                <li class="previous">
-                    <a href="#">← Starsze</a>
-                </li>
-                <li class="next">
-                    <a href="#">Nowsze →</a>
-                </li>
-            </ul>
       		</div><!--koniec najnowszych-->
       		
       		<!-- poczatek najpopularniejszych-->
       		<div class="col-md-3" id="content">
             	<div class="panel">
 					<div class="panel-heading" style="background-color:#111">Najpopularniejsze</div>   
-						<div class="panel-body">
+						<div class="panel-body" style="background-color:#E0E0E0">
 							<div class="media">
 								<div class="media-body">
 									<?php
 									
-									  include_once('cms.php');
+									  include_once('cms-user.php');
 									  $obj = new comments();
 
 									  /* CHANGE THESE SETTINGS FOR YOUR OWN DATABASE */
@@ -180,7 +173,6 @@ include('lock.php');
 									  echo $obj->display_public();
 									
 									?>
-                                    
 								</div>
 							</div>
 						</div><!--/panel-body-->

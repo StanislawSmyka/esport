@@ -5,20 +5,25 @@ include('lock-ad.php');
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 $idp = $_GET['idp'];
+echo $idp;
 $q = "SELECT id FROM comments";
 $res = mysqli_query($db,$q);
 $rowsnum = $res->num_rows;
 $id=$rowsnum+1;
 
-$title=mysqli_real_escape_string($db,$_POST['title']);
+$title= $login_session;
 $bodytext =mysqli_real_escape_string($db,$_POST['bodytext']);
-$query = "INSERT INTO comments (number, id, user, comment) VALUES('$id','$idp', '$title', '$bodytext')";
+$t=time();
+$t = date("Y-m-d",$t);
+$created =  mysqli_real_escape_string($db,$t);
+$query = "INSERT INTO comments (number, id, user, comment, created) VALUES('$id','$idp', '$title', '$bodytext', '$created')";
 $result = mysqli_query($db, $query);
 $count = $_GET['count'];
 $count= $count+1;
 $query2 = "UPDATE info SET count='$count' WHERE id='$idp'";
 $results = mysqli_query($db, $query2);
-header("location: readmore.php?idp=$idp&count=$count");
+header("location: readmore-ad.php?idp=$idp&count=$count");
+
 }
 ?>
 
@@ -37,10 +42,12 @@ header("location: readmore.php?idp=$idp&count=$count");
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 
-</head><body background="images\background2.jpg">
+</head>
+
+<body background="images\background2.jpg">
 
     <!-- nawigacja -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- mobilny wyglad -->
             <div class="navbar-header">
@@ -58,14 +65,14 @@ header("location: readmore.php?idp=$idp&count=$count");
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index-nolog.php">Strona główna</a>
+                        <a href="index-ad.php">Strona główna</a>
                     </li>
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-noad.php">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a href="leagueoflegends_live.html" tabindex="-1" href="#">Na żywo</a></li>
+								<li><a href="leagueoflegends_live-ad.php" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -102,12 +109,12 @@ header("location: readmore.php?idp=$idp&count=$count");
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
-                    <li>
-						<form class="search" action="./search.php" method="get">
+					<li>
+						<form class="search">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Szukaj..." name="search">
+								<input type="text" class="form-control" placeholder="Szukaj">
 								<div class="input-group-btn">
-									<button class="btn btn-default" type="submit" value="Szukaj">
+									<button class="btn btn-default" type="submit">
 										<i class="glyphicon glyphicon-search"></i>
 									</button>
 								</div>
@@ -115,7 +122,12 @@ header("location: readmore.php?idp=$idp&count=$count");
 						</form>
 					</li>
 					<li class="dropdown">
-							<a href="login.php">Zaloguj się</a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a tabindex="-1" a href="panel-ad.php">Opcje</a></li>
+								<li class="divider"></li>
+								<li><a tabindex="-1" a href="logout.php">Wyloguj</a></li>
+							</ul>
 					</li>
 				</ul>
             </div>
@@ -156,18 +168,9 @@ header("location: readmore.php?idp=$idp&count=$count");
 									 ?>
                         </div>
                     </div>
-                    <ul class="pager">
-                        <li class="previous">
-                            <a href="index.php">← Powrót do postów</a>
-                    </ul>
                     <div class="well">
                     <h4>Zostaw komentarz</h4>
-                        <form role="form" class="clearfix">
-                            <div class="col-md-6 form-group">
-                                <label class="sr-only" for="name">Użytkownik</label>
-                                <input type="text" name="title" class="form-control" placeholder="Użytkownik">
-                            </div>
- 
+                        <form role="form" class="clearfix" method="post">
                             <div class="col-md-12 form-group">
                                 <label class="sr-only" for="email">Komentarz</label>
                                 <textarea class="form-control" name="bodytext" id="bodytext" placeholder="Komentarz"></textarea>
@@ -193,6 +196,9 @@ header("location: readmore.php?idp=$idp&count=$count");
                                     </div>
                                     <p>
                                         <em><?php echo $row['comment']; ?></em>
+                                    </p>
+									<p>
+                                        <em><?php echo $row['created']; ?></em>
                                     </p>
                                 </li>
 				            <?php

@@ -119,7 +119,7 @@ include('lock-ad.php');
 			<div class="col-md-2">
               	<div class="panel">
 					<div class="panel-heading" style="background-color:#888">Opcje</div> 
-						<div class="panel-body">
+						<div class="panel-body" style="background-color:#E0E0E0">
 							<ul class="nav nav-stacked">
 							<li><a href="addpost.php">Dodaj nowy post</a></li>
 							<li><a href="deletep.php">Usuń post</a></li>

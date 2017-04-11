@@ -125,7 +125,7 @@ include('lock-ad.php');
 								<div class="col-md-12">
 									<?php
 									
-									  include_once('cms.php');
+									  include_once('cms-ad.php');
 									  $obj = new simpleCMS();
 
 									  /* CHANGE THESE SETTINGS FOR YOUR OWN DATABASE */
@@ -145,26 +145,18 @@ include('lock-ad.php');
 							</div>
 						</div>
                </div><!--/panel-->
-            <ul class="pager">
-                <li class="previous">
-                    <a href="#">← Starsze</a>
-                </li>
-                <li class="next">
-                    <a href="#">Nowsze →</a>
-                </li>
-            </ul>
       		</div><!--koniec najnowszych-->
       		
       		<!-- poczatek najpopularniejszych-->
-      		<div class="col-md-3" id="content">
+            <div class="col-md-3" id="content">
             	<div class="panel">
 					<div class="panel-heading" style="background-color:#111">Najpopularniejsze</div>   
-						<div class="panel-body">
+						<div class="panel-body" style="background-color:#E0E0E0">
 							<div class="media">
 								<div class="media-body">
 									<?php
 									
-									  include_once('cms.php');
+									  include_once('cms-ad.php');
 									  $obj = new comments();
 
 									  /* CHANGE THESE SETTINGS FOR YOUR OWN DATABASE */
@@ -180,7 +172,6 @@ include('lock-ad.php');
 									  echo $obj->display_public();
 									
 									?>
-                                    
 								</div>
 							</div>
 						</div><!--/panel-body-->
@@ -188,6 +179,7 @@ include('lock-ad.php');
             </div><!--koniec najpopularniejszych-->
       	</div> 
   	</div>
+    </div>
     <!-- /.container -->
 
     <!-- jQuery -->
@@ -195,8 +187,7 @@ include('lock-ad.php');
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    <!-- Wymagane pola -->
-    <script src="js/required.js"></script>
 
 </body>
+
 </html>

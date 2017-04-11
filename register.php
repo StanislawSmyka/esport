@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ERROR);
 
 //Google recaptcha
 // Recaptcha google library
@@ -50,7 +49,7 @@ if ($response != null && $response->success) {
         }
     }
 } else {
-    echo "wypelnij captche";
+    echo "wypelnij captche" . mysql_error();
 }
 ?>
 
@@ -183,7 +182,7 @@ if ($response != null && $response->success) {
 					</div>
 				</div>
 				    <div class="g-recaptcha" data-sitekey="6LcCtRsUAAAAAPJZ3JvQFCBBbhI57YfX3NeYgNrC"></div>
-				    <input type="submit" class="btn btn-default" value="Wyślij"/>
+				    <input type="submit" value="Stwórz" class="btn btn-default"/>
                 </form>
             </div>
         </div>

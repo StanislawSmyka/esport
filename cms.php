@@ -8,7 +8,7 @@ class simpleCMS {
   var $table;
 
   public function display_public() {
-    $q = "SELECT * FROM info ORDER BY created DESC LIMIT 3";
+    $q = "SELECT * FROM info ORDER BY created DESC LIMIT 5";
     $r = mysql_query($q);
 
     if ( $r !== false && mysql_num_rows($r) > 0 ) {
@@ -19,7 +19,7 @@ class simpleCMS {
 		$created = stripslashes($a['created']);
 		$count = stripslashes($a['count']);
         $entry_display .= <<<ENTRY_DISPLAY
-    	<h2>$title</h2>
+        <h2>$title</h2>
         <div class="latest-wrapping">$bodytext</div>
         <a href="readmore.php?idp=$id&count=$count">... więcej</a>
         
@@ -84,6 +84,7 @@ class comments {
 		$created = stripslashes($a['created']);
 		$count = stripslashes($a['count']);
         $entry_display .= <<<ENTRY_DISPLAY
+
         <h3>$title</h2>
         <div class="popular-wrapping">$bodytext</div>
         
@@ -131,3 +132,5 @@ MySQL_QUERY;
   }
 
 }
+
+?>

@@ -11,8 +11,10 @@ $id=$rowsnum+1;
 
 $title=mysqli_real_escape_string($db,$_POST['title']);
 $bodytext =mysqli_real_escape_string($db,$_POST['bodytext']);
-$created = mysqli_real_escape_string($db,$_POST['created']);
-$query = "INSERT INTO comments (number, id, user, comment) VALUES('$id','$idp', '$title', '$bodytext', '$created')";
+$t=time();
+$t = date("Y-m-d",$t);
+$created =  mysqli_real_escape_string($db,$t);
+$query = "INSERT INTO comments (number, id, user, comment, created) VALUES('$id','$idp', '$title', '$bodytext', '$created')";
 $result = mysqli_query($db, $query);
 $count = $_GET['count'];
 $count= $count+1;
@@ -158,13 +160,9 @@ header("location: readmore.php?idp=$idp&count=$count");
 									 ?>
                         </div>
                     </div>
-                    <ul class="pager">
-                        <li class="previous">
-                            <a href="index.php">← Powrót do postów</a>
-                    </ul>
                     <div class="well">
                     <h4>Zostaw komentarz</h4>
-                        <form role="form" class="clearfix">
+                        <form role="form" class="clearfix" method="post">
                             <div class="col-md-6 form-group">
                                 <label class="sr-only" for="name">Użytkownik</label>
                                 <input type="text" name="title" class="form-control" placeholder="Użytkownik">
@@ -196,6 +194,9 @@ header("location: readmore.php?idp=$idp&count=$count");
                                     <p>
                                         <em><?php echo $row['comment']; ?></em>
                                     </p>
+									  <p>
+                                        <em><?php echo $row['created']; ?></em>
+                                    </p>
                                 </li>
 				            <?php
 				        }
@@ -216,4 +217,3 @@ header("location: readmore.php?idp=$idp&count=$count");
 
 </body>
 </html>
-

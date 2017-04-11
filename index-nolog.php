@@ -1,5 +1,4 @@
 <?php
-
 error_reporting(E_ERROR);
 //Strona główna dla niezalgownaych użyktowników
 ?>
@@ -19,6 +18,7 @@ error_reporting(E_ERROR);
     <title>Esports - wszystkie rozgrywki w jednym miejscu.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -141,21 +141,13 @@ error_reporting(E_ERROR);
 							</div>
 						</div>
                </div><!--/panel-->
-            <ul class="pager">
-                <li class="previous">
-                    <a href="#">← Starsze</a>
-                </li>
-                <li class="next">
-                    <a href="#">Nowsze →</a>
-                </li>
-            </ul>
       		</div><!--koniec najnowszych-->
       		
       		<!-- poczatek najpopularniejszych-->
       		<div class="col-md-3" id="content">
             	<div class="panel">
 					<div class="panel-heading" style="background-color:#111">Najpopularniejsze</div>   
-						<div class="panel-body">
+						<div class="panel-body" style="background-color:#E0E0E0">
 							<div class="media">
 								<div class="media-body">
 									<?php
@@ -176,7 +168,6 @@ error_reporting(E_ERROR);
 									  echo $obj->display_public();
 									
 									?>
-                                    
 								</div>
 							</div>
 						</div><!--/panel-body-->

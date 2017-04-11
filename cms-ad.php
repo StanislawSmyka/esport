@@ -17,24 +17,19 @@ class simpleCMS {
         $title = stripslashes($a['title']);
         $bodytext = stripslashes($a['bodytext']);
 		$created = stripslashes($a['created']);
+		$count = stripslashes($a['count']);
 		$id = stripslashes($a['id']);
 		
         $entry_display .= <<<ENTRY_DISPLAY
-
-    <div class="post">
-    	<h2>
-    	<a href="readmore-ad.php?idp=$id&count=$count">$title</a> 
-    	</h2>
-	    <p>
-	      $bodytext
-	    </p>
-		<h6>
-			$created
-		</h6>
-		<h6>
-		$count
-		</h6>
-	</div>
+        <h2>$title</h2>
+        <div class="latest-wrapping">$bodytext</div>
+        <a href="readmore-ad.php?idp=$id&count=$count">... więcej</a>
+        
+		<h6><span class="glyphicon glyphicon-calendar"></span>$created</h6>
+        
+        <span class="glyphicon glyphicon-pencil"></span>
+		<span class="badge">$count</span>
+        <hr>
 
 ENTRY_DISPLAY;
       }
@@ -134,22 +129,16 @@ class comments {
 		$created = stripslashes($a['created']);
 		$count = stripslashes($a['count']);
         $entry_display .= <<<ENTRY_DISPLAY
-
-    <div class="post">
-    	<h5>
-    	<a href="readmore-ad.php?idp=$id&count=$count">$title</a> 
-    	</h5>
-	    <p>
-	      $bodytext
-	    </p>
-		<h6>
-			$created
-		</h6>
-		<h6>
-		$count
-		</h6>
-		</hr>
-	</div>
+        <h3>$title</h2>
+        <div class="popular-wrapping">$bodytext</div>
+        
+    	<a href="readmore-ad.php?idp=$id&count=$count">... więcej</a>
+        
+		<h6><span class="glyphicon glyphicon-calendar"></span>$created</h6>
+        
+        <span class="glyphicon glyphicon-pencil"></span>
+		<span class="badge">$count</span>
+        <hr>
 
 ENTRY_DISPLAY;
       }

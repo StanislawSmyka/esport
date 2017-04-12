@@ -21,7 +21,6 @@ body {
 }
 
 @media only screen and (min-width : 768px) {
-    /* Make Navigation Toggle on Desktop Hover */
     .dropdown:hover .dropdown-menu {
         display: block;
     }
@@ -73,4 +72,9 @@ body {
 #comments li {
     list-style: none;
     padding-left: 13px;
+}
+
+li [class^="pull-right"] {
+    padding-top: 7px !important;
+    margin-right: 15px;
 }

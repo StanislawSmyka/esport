@@ -125,8 +125,8 @@ include('lock-ad.php');
 								<div class="col-md-12">
 									<?php
 									
-									  include_once('cms-ad.php');
-									  $obj = new simpleCMS();
+									  include_once ('functions.php');
+									  $obj = new CMSadmin();
 
 									  /* CHANGE THESE SETTINGS FOR YOUR OWN DATABASE */
 									  $obj->host = 'localhost';
@@ -156,8 +156,8 @@ include('lock-ad.php');
 								<div class="media-body">
 									<?php
 									
-									  include_once('cms-ad.php');
-									  $obj = new comments();
+									  include_once ('functions.php');
+									  $obj = new commentsadmin();
 
 									  /* CHANGE THESE SETTINGS FOR YOUR OWN DATABASE */
 									  $obj->host = 'localhost';

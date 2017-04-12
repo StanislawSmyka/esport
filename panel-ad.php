@@ -137,8 +137,8 @@ include('lock-ad.php');
 								<div class="col-md-12">
 									<?php
 									
-									  include_once('cms-ad.php');
-									  $obj = new simpleCMS();
+									  include_once ('functions.php');
+									  $obj = new CMSadmin();
 									  $obj->host = 'localhost';
 									  $obj->username = 'admin';
 									  $obj->password = 'pass';

@@ -1,20 +1,17 @@
 <?php
 //panel do dodawania postów
 include('config.php');
+include('functions.php');
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 $idp = $_GET['idp'];
-$q = "SELECT id FROM comments";
-$res = mysqli_query($db,$q);
-$rowsnum = $res->num_rows;
-$id=$rowsnum+1;
-
 $title=mysqli_real_escape_string($db,$_POST['title']);
 $bodytext =mysqli_real_escape_string($db,$_POST['bodytext']);
 $t=time();
 $t = date("Y-m-d",$t);
 $created =  mysqli_real_escape_string($db,$t);
-$query = "INSERT INTO comments (number, id, user, comment, created) VALUES('$id','$idp', '$title', '$bodytext', '$created')";
+$ip = getUserIp();
+$query = "INSERT INTO comments (id, user, comment, created, ip) VALUES('$idp', '$title', '$bodytext', '$created','$ip')";
 $result = mysqli_query($db, $query);
 $count = $_GET['count'];
 $count= $count+1;
@@ -187,17 +184,20 @@ header("location: readmore.php?idp=$idp&count=$count");
                     <ul id="comments" class="comments">
 						<?php
                         while($row = mysqli_fetch_assoc($result)) {
-							?><li class="list-group-item">
-                                    <div class="clearfix">
-                                        <h4 class="pull-left"><?php echo $row['user']; ?></h4>
-                                    </div>
-                                    <p>
-                                        <em><?php echo $row['comment']; ?></em>
+							?>
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <h4 class="pull-left"><?php echo $row['user']; ?></h4>
+                                    <p class="pull-right">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                        <?php echo $row['created']; ?>
                                     </p>
-									  <p>
-                                        <em><?php echo $row['created']; ?></em>
-                                    </p>
-                                </li>
+                            </div>
+                            <p>
+                                <em><?php echo $row['comment']; ?></em>
+                            </p>
+                            <p><samp><?php echo $row['ip']; ?></samp></p>
+                        </li>
 				            <?php
 				        }
                     ?>

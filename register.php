@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ERROR);
 //Google recaptcha
 // Recaptcha google library
 require_once "recaptchalib.php";
@@ -43,13 +43,50 @@ if ($response != null && $response->success) {
         $result = mysqli_query($db, $query);
 
         if($result) {
-            echo "Stworzono konto";
-        } else {
-            echo "błedny mail lub nazwa uzytkownika juz istnieje" . mysql_error();
+            function display_error() {
+			      $error_display = <<<ENTRY_DISPLAY
+				   <div class="container">
+                    <div class="alert alert-success alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Stworzono użytkownika!</strong> Możesz się zalogować.
+                    </div>
+                </div>
+ENTRY_DISPLAY;
+					return $error_display;	
+			}
+			echo display_error();
+        } 
+		else
+			{
+			function display_error() {
+			      $error_display = <<<ENTRY_DISPLAY
+				   <div class="container">
+                    <div class="alert alert-danger alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Błąd!</strong> Błędny e-mail lub użytkownik o takiej nazwie już istnieje!
+                    </div>
+                </div>
+ENTRY_DISPLAY;
+					return $error_display;	
+			}
+			echo display_error();
         }
     }
 } else {
-    echo "wypelnij captche" . mysql_error();
+	function display_error() {
+			      $error_display = <<<ENTRY_DISPLAY
+                  <div class="container">
+                    <div class="alert alert-warning alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Uwaga!</strong> Wypełnij captche!
+                    </div>
+                </div>
+                  
+ENTRY_DISPLAY;
+					return $error_display;	
+			}
+			echo display_error();
+			mysql_error();
 }
 ?>
 
@@ -136,13 +173,11 @@ if ($response != null && $response->success) {
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
                     <li>
-						<form class="search" action="./search.php" method="get">
+						<form class="navbar-form" action="./search.php" method="get">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Szukaj..." name="search">
+								<input type="text" size="15" class="form-control" name="search">
 								<div class="input-group-btn">
-									<button class="btn btn-default" type="submit" value="Szukaj">
-										<i class="glyphicon glyphicon-search"></i>
-									</button>
+									<button class="btn btn-default" type="submit" value="Szukaj">Szukaj</button>
 								</div>
 							</div>
 						</form>

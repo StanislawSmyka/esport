@@ -85,13 +85,11 @@ include('lock-ad.php');
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<form class="search">
+						<form class="navbar-form" action="./search.php" method="get">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Szukaj">
+								<input type="text" size="15" class="form-control" name="search">
 								<div class="input-group-btn">
-									<button class="btn btn-default" type="submit">
-										<i class="glyphicon glyphicon-search"></i>
-									</button>
+									<button class="btn btn-default" type="submit" value="Szukaj">Szukaj</button>
 								</div>
 							</div>
 						</form>
@@ -123,7 +121,8 @@ include('lock-ad.php');
 							<ul class="nav nav-stacked">
 							<li><a href="addpost.php">Dodaj nowy post</a></li>
 							<li><a href="deletep.php">Usuń post</a></li>
-							<li><a href="#">Zmień hasło</a></li>
+							<li><a href="cpass-ad.php">Zmień hasło</a></li>
+							<li><a href="cmail-ad.php">Zmień e-mail</a></li>
 							</ul>
 						</div>
 				</div>

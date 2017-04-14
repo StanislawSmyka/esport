@@ -40,10 +40,6 @@ body {
 	color: #FFFFFF;
 }
 
-.search {
-	padding-top:8px;
-}
-
 .latest-wrapping {
    overflow: hidden;
    text-overflow: ellipsis;

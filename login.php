@@ -39,7 +39,8 @@ header("location: index.php");
 }
 else 
 {
-$error="Your Login Name or Password is invalid";
+$error="Twoja nazwa użytkownika lub hasło są błędne";
+echo $error;
 }
 }
 }
@@ -129,13 +130,11 @@ $error="Your Login Name or Password is invalid";
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
                     <li>
-						<form class="search" action="./search.php" method="get">
+						<form class="navbar-form" action="./search.php" method="get">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Szukaj..." name="search">
+								<input type="text" size="15" class="form-control" name="search">
 								<div class="input-group-btn">
-									<button class="btn btn-default" type="submit" value="Szukaj">
-										<i class="glyphicon glyphicon-search"></i>
-									</button>
+									<button class="btn btn-default" type="submit" value="Szukaj">Szukaj</button>
 								</div>
 							</div>
 						</form>

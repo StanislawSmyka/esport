@@ -1,5 +1,40 @@
+<?php
+include("lock.php");
+
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{ 
+$pass=mysqli_real_escape_string($db,$_POST['pass']);
+$pass=md5($pass);
+
+$sql="SELECT id FROM user WHERE username='$login_session' and passcode='$pass'";
+$result=mysqli_query($db,$sql);
+$row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+$count=mysqli_num_rows($result);
+if($count==1)
+{
+$newemail=mysqli_real_escape_string($db,$_POST['newemail']);;
+$query = "UPDATE user SET email='$newemail' WHERE username='$login_session'";
+     if (!filter_var($newemail, FILTER_VALIDATE_EMAIL)) {
+            $query = NULL;
+			$error='błędny mail';
+			echo $error;
+			}
+			else
+			{
+			$result = mysqli_query($db, $query);
+			header("location: panel.php");
+			}	
+	}
+else 
+{
+$error="błędne hasło";
+echo $error;
+}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="utf-8">
@@ -13,9 +48,7 @@
     <link href="css/custom.css" rel="stylesheet">
 
 </head>
-
 <body>
-
     <!-- nawigacja -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -35,14 +68,14 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index-nolog.php">Strona główna</a>
+                        <a href="index.php">Strona główna</a>
                     </li>
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-noad.php">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-user.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a href="leagueoflegends_live.html" tabindex="-1" href="#">Na żywo</a></li>
+								<li><a href="leagueoflegends_live.php" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -90,7 +123,12 @@
 						</form>
 					</li>
 					<li class="dropdown">
-							<a href="login.php">Zaloguj się</a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a tabindex="-1" a href="panel.php">Opcje</a></li>
+								<li class="divider"></li>
+								<li><a tabindex="-1" a href="logout.php">Wyloguj</a></li>
+							</ul>
 					</li>
 				</ul>
             </div>
@@ -100,12 +138,27 @@
     </nav>
 
     <!-- tresc strony -->
-    <div class="container">
+ <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <p><iframe src="https://player.twitch.tv/?channel=riotgames" allowfullscreen="allowfullscreen" frameborder="0" scrolling="no" height="500" width="70%"></iframe><iframe src="https://www.twitch.tv/riotgames/chat?popout=" frameborder="0" scrolling="no" height="500" width="30%"></iframe></p>
-            </div>
-        </div>
+			<h1 class="page-header">Zmień adres e-mail</h1>
+            <div class="col-lg-4">
+                <form action="" method="post">
+				<div class="form-group">
+					<div class="controls">
+						<label>Podaj hasło</label>
+						<input type="text" name="pass" class="form-control"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="controls">
+						<label>Podaj nowy e-mail</label>
+						<input type="text" name="newemail" class="form-control"/>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-default" value="submit">Wyślij</button>
+                </form>
+            </div> 
+    </div>
     </div>
     <!-- /.container -->
 
@@ -114,9 +167,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    <!-- Wymagane pola -->
-    <script src="js/required.js"></script>
-    
+
 </body>
 
 </html>

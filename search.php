@@ -86,14 +86,12 @@ error_reporting(E_ERROR);
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<form class="search" action="search.php" method="get">
+                    <li>
+						<form class="navbar-form" action="./search.php" method="get">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Szukaj..." name="search" value="<?php echo $_GET["search"]; ?>"/>
+								<input type="text" size="15" class="form-control" name="search" value="<?php echo $_GET["search"]; ?>">
 								<div class="input-group-btn">
-									<button class="btn btn-default" type="submit" value="search">
-										<i class="glyphicon glyphicon-search"></i>
-									</button>
+									<button class="btn btn-default" type="submit" value="Szukaj">Szukaj</button>
 								</div>
 							</div>
 						</form>

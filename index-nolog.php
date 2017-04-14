@@ -18,7 +18,7 @@ error_reporting(E_ERROR);
     <title>Esports - wszystkie rozgrywki w jednym miejscu.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
-
+    
 </head>
 
 <body>

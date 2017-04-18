@@ -23,13 +23,15 @@ header("location: panel-ad.php");
 
 <head>
 
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Strona esportowa">
     <meta name="author" content="Stanisław Smyka Tomasz Matuszczak">
 
-    <title>Esports - wszystkie rozgrywki w jednym miejscu.</title>
+    <title>Esports - usuwanie postu.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 
@@ -48,16 +50,13 @@ header("location: panel-ad.php");
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index-ad.php">
                     <img src="images/esports.jpeg" alt="">
                 </a>
             </div>
             <!-- nav linki w menu -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="panel-ad.php">Strona główna</a>
-                    </li>
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -101,7 +100,7 @@ header("location: panel-ad.php");
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
                     <li>
-						<form class="navbar-form" action="./search.php" method="get">
+						<form class="navbar-form" action="./search-ad.php" method="get">
 							<div class="input-group">
 								<input type="text" size="15" class="form-control" name="search">
 								<div class="input-group-btn">
@@ -133,7 +132,7 @@ header("location: panel-ad.php");
                 <form action="" method="post">
 				<div class="form-group">
 				    <div class="controls">
-				        <label>Podaj id</label>
+				        <label>Podaj id:</label>
 						<input type="text" name="id" class="form-control"/>
 					</div>
 				</div>

@@ -39,8 +39,18 @@ header("location: index.php");
 }
 else 
 {
-$error="Twoja nazwa użytkownika lub hasło są błędne";
-echo $error;
+function display_error() {
+			      $error_display = <<<ENTRY_DISPLAY
+				   <div class="container">
+                    <div class="alert alert-danger alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Błąd!</strong> Błędna nazwa użytkownika lub hasło
+                    </div>
+                </div>
+ENTRY_DISPLAY;
+					return $error_display;	
+			}
+			echo display_error();
 }
 }
 }
@@ -52,13 +62,15 @@ echo $error;
 
 <head>
 
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Strona esportowa">
     <meta name="author" content="Stanisław Smyka Tomasz Matuszczak">
 
-    <title>Esports - wszystkie rozgrywki w jednym miejscu.</title>
+    <title>Esports - logowanie.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 	<script src='https://www.google.com/recaptcha/api.js'></script>
@@ -77,16 +89,13 @@ echo $error;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index-nolog.php">
                     <img src="images/esports.jpeg" alt="">
                 </a>
             </div>
             <!-- nav linki w menu -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="index-nolog.php">Strona główna</a>
-                    </li>
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">

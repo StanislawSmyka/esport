@@ -28,6 +28,8 @@ header("location: readmore-ad.php?idp=$idp&count=$count");
 
 <head>
 
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,16 +55,13 @@ header("location: readmore-ad.php?idp=$idp&count=$count");
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index-ad.php">
                     <img src="images/esports.jpeg" alt="">
                 </a>
             </div>
             <!-- nav linki w menu -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="index-ad.php">Strona główna</a>
-                    </li>
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -106,7 +105,7 @@ header("location: readmore-ad.php?idp=$idp&count=$count");
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<form class="navbar-form" action="./search.php" method="get">
+						<form class="navbar-form" action="./search-ad.php" method="get">
 							<div class="input-group">
 								<input type="text" size="15" class="form-control" name="search">
 								<div class="input-group-btn">

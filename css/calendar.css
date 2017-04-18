@@ -23,9 +23,11 @@ body{ font-family: sans-serif;}
 	width: 143px;
 	height: 115px;
 	z-index: 9999;
-	top: -115px;
-	left:-55px;
-	background: transparent url(add-new-event.png) no-repeat top left;
+	top: -15px;
+	left:-25px;
+	background: #FFF no-repeat top left;
+    border-color: #DDDDDD !important;
+    border-style: solid;
 	color: #666 !important;
 }
 .events_window {
@@ -43,12 +45,7 @@ body{ font-family: sans-serif;}
 	padding: 3px;
 }
 .date_window {
-	margin-top:20px;
-	margin-bottom: 2px;
 	padding: 5px;
-	font-size: 16px;
-	margin-left:9px;
-	margin-right:14px
 }
 .popup_event {
 	margin-bottom: 2px;

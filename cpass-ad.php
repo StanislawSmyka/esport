@@ -30,13 +30,15 @@ echo $error;
 
 <head>
 
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Strona esportowa">
     <meta name="author" content="Stanisław Smyka Tomasz Matuszczak">
 
-    <title>Esports - wszystkie rozgrywki w jednym miejscu.</title>
+    <title>Esports - zmiana hasła.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 
@@ -55,16 +57,13 @@ echo $error;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index-ad.php">
                     <img src="images/esports.jpeg" alt="">
                 </a>
             </div>
             <!-- nav linki w menu -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="index-ad.php">Strona główna</a>
-                    </li>
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -108,7 +107,7 @@ echo $error;
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<form class="navbar-form" action="./search.php" method="get">
+						<form class="navbar-form" action="./search-ad.php" method="get">
 							<div class="input-group">
 								<input type="text" size="15" class="form-control" name="search">
 								<div class="input-group-btn">
@@ -140,14 +139,14 @@ echo $error;
                 <form action="" method="post">
 				<div class="form-group">
 					<div class="controls">
-						<label>Podaj stare hasło</label>
-						<input type="text" name="oldpass" class="form-control"/>
+						<label>Podaj stare hasło:</label>
+						<input type="password" name="oldpass" class="form-control"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="controls">
-						<label>podaj nowe hasło</label>
-						<input type="text" name="newpass" class="form-control"/>
+						<label>Podaj nowe hasło:</label>
+						<input type="password" name="newpass" class="form-control"/>
 					</div>
 				</div>
 				<button type="submit" class="btn btn-default" value="submit">Wyślij</button>
@@ -162,6 +161,8 @@ echo $error;
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <!-- Wymagane pola -->
+    <script src="js/required.js"></script>
 
 </body>
 

@@ -1,5 +1,12 @@
+
+<?php
+include("lock.php");
+error_reporting(E_ERROR);
+//Strona główna dla niezalgownaych użyktowników
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -10,7 +17,7 @@
     <meta name="description" content="Strona esportowa">
     <meta name="author" content="Stanisław Smyka Tomasz Matuszczak">
 
-    <title>Esports - League of Legends na żywo.</title>
+    <title>Esports - wyniki wyszukiwania.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 
@@ -29,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index-nolog.php">
+                <a class="navbar-brand" href="index.php">
                     <img src="images/esports.jpeg" alt="">
                 </a>
             </div>
@@ -41,7 +48,7 @@
 							<ul class="dropdown-menu">
 								<li><a tabindex="-1" href="cal-noad.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a href="leagueoflegends_live.html" tabindex="-1" href="#">Na żywo</a></li>
+								<li><a tabindex="-1" href="leagueoflegends_live.html">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -79,17 +86,22 @@
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
                     <li>
-						<form class="navbar-form" action="./search.php" method="get">
+						<form class="navbar-form" action="./searchuser.php" method="get">
 							<div class="input-group">
-								<input type="text" size="15" class="form-control" name="search">
+								<input type="text" size="15" class="form-control" name="search" value="<?php echo $_GET["search"]; ?>">
 								<div class="input-group-btn">
 									<button class="btn btn-default" type="submit" value="Szukaj">Szukaj</button>
 								</div>
 							</div>
 						</form>
 					</li>
-					<li class="dropdown">
-							<a href="login.php">Zaloguj się</a>
+				    <li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a tabindex="-1" a href="panel.php">Opcje</a></li>
+								<li class="divider"></li>
+								<li><a tabindex="-1" a href="logout.php">Wyloguj</a></li>
+							</ul>
 					</li>
 				</ul>
             </div>
@@ -100,11 +112,65 @@
 
     <!-- tresc strony -->
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <p><iframe src="https://player.twitch.tv/?channel=riotgames" allowfullscreen="allowfullscreen" frameborder="0" scrolling="no" height="500" width="70%"></iframe><iframe src="https://www.twitch.tv/riotgames/chat?popout=" frameborder="0" scrolling="no" height="500" width="30%"></iframe></p>
-            </div>
-        </div>
+		<h1 class="page-header">Wyniki wyszukiwania:</h1>
+        <div class="no-gutter row">
+			<!-- poczatek najnowszych -->
+      		<div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-body">
+							<div class="row">
+								<div class="col-md-12">
+                                    <?php
+                                    $keyword=$_GET["search"];
+                                    if ($keyword != ""){
+                                        $i=0;
+                                        $terms=explode(" ",$keyword);
+                                        $query="SELECT * FROM info WHERE ";
+
+                                        foreach ($terms as $each) {
+                                            $i++;
+                                            if ($i==1)
+                                                $query .="title LIKE '%$each%' OR bodytext LIKE '%$each%'";
+                                            else
+                                                $query .="OR title LIKE '%$each%' OR bodytext LIKE '%$each%'";
+                                        }
+
+                                        $query=mysqli_query($db,$query);
+                                        $numrows=mysqli_num_rows($query);
+                                        if ($numrows>0){
+                                            while ($row=mysqli_fetch_assoc($query)){
+                                                $id=$row['id'];
+                                                $title=$row['title'];
+                                                $bodytext=$row['bodytext'];
+												$count=$row['count'];
+												function display_entry($title,$bodytext,$id,$count) {
+													$entry_display .= <<<ENTRY_DISPLAY
+                                                       <h2>$title</h2>
+														<div class="latest-wrapping">$bodytext</div>
+														 <a href="readmore-user.php?idp=$id&count=$count">... więcej</a>
+														  <h6><span class="glyphicon glyphicon-calendar"></span>$created</h6>
+														
+														<span class="glyphicon glyphicon-pencil"></span>
+														<span class="badge">$count</span>
+														<hr>
+ENTRY_DISPLAY;
+												return $entry_display;
+												}
+												echo display_entry($title,$bodytext,$id,$count);
+                                            }
+                                        }
+                                    else
+                                        echo "Brak wyników dla ''$keyword''.";
+                                         }
+                                    else
+                                        echo "Nic nie wyszukałeś.";
+				                    ?>
+                                </div>
+							</div>
+						</div>
+                </div>
+			</div> 
+		</div>
     </div>
     <!-- /.container -->
 
@@ -115,7 +181,7 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- Wymagane pola -->
     <script src="js/required.js"></script>
-    
+
 </body>
 
 </html>

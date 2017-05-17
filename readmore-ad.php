@@ -178,7 +178,7 @@ header("location: readmore-ad.php?idp=$idp&count=$count");
 					<?php 
 						$idda = $_GET['idp'];
 						$counta = $_GET['count'];							
-						$sql = "SELECT * FROM comments Where id='$idda'";
+						$sql = "SELECT * FROM comments Where id='$idda' ORDER BY created DESC";
 						$result =mysqli_query($db,$sql);
                     ?>
                     <ul id="comments" class="comments">

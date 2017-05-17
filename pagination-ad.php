@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ERROR);
-include("config.php"); //include config file
+include("config-ad.php"); //include config file
 
 //sanitize post value
 if(isset($_POST["page"])){
@@ -32,7 +32,7 @@ while($row = mysqli_fetch_array($results))
         <h2>$title</h2>
         <div class="popular-wrapping">$bodytext</div>
         
-    	<a href="readmore.php?idp=$id&count=$count">... więcej</a>
+    	<a href="readmore-ad.php?idp=$id&count=$count">... więcej</a>
         
 		<h6><span class="glyphicon glyphicon-calendar"></span>$created</h6>
         

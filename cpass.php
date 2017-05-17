@@ -20,7 +20,14 @@ header("location: panel.php");
 }
 else 
 {
-$error="błędne hasło";
+$error= <<<ENTRY_DISPLAY
+	   <div class="container">
+           <div class="alert alert-danger alert-dismissable fade in">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                 <strong>Błąd!</strong> Błędne hasło
+                  </div>
+                </div>
+ENTRY_DISPLAY;
 echo $error;
 }
 }
@@ -118,7 +125,9 @@ echo $error;
 					<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" a href="panel.php">Opcje</a></li>
+								<li><a tabindex="-1" a href="cpass.php">Zmiana hasła</a></li>
+								<li class="divider"></li>
+								<li><a tabindex="-1" a href="cmail.php">Zmiana e-mail</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" a href="logout.php">Wyloguj</a></li>
 							</ul>

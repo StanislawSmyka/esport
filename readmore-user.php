@@ -116,7 +116,9 @@ header("location: readmore-user.php?idp=$idp&count=$count");
 					<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" a href="panel.php">Opcje</a></li>
+								<li><a tabindex="-1" a href="cpass.php">Zmiana hasła</a></li>
+								<li class="divider"></li>
+								<li><a tabindex="-1" a href="cmail.php">Zmiana e-mail</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" a href="logout.php">Wyloguj</a></li>
 							</ul>
@@ -176,7 +178,7 @@ header("location: readmore-user.php?idp=$idp&count=$count");
                     </div>
 					<?php 
 						$idda = $_GET['idp'];	
-						$sql = "SELECT * FROM comments Where id='$idda'";
+						$sql = "SELECT * FROM comments Where id='$idda' ORDER BY created DESC";
 						$result =mysqli_query($db,$sql);
                     ?>
                     <ul id="comments" class="comments">

@@ -1,9 +1,8 @@
 <?php
 error_reporting(E_ERROR);
 include('lock.php');
-include("config.inc.php");
 
-$results = mysqli_query($connecDB,"SELECT COUNT(*) FROM info");
+$results = mysqli_query($db,"SELECT COUNT(*) FROM info");
 $get_total_rows = mysqli_fetch_array($results); //total records
 
 //break total records into pages
@@ -35,14 +34,14 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
     <script src="js/required.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#results").load("pagination.php");  //initial page number to load
+            $("#results").load("pagination-user.php");  //initial page number to load
             $(".pagination").bootpag({
                 total: <?php echo $pages; ?>,
                 page: 1,
                 maxVisible: 5 
             }).on("page", function(e, num){
                 e.preventDefault();
-                $("#results").load("pagination.php", {'page':num});
+                $("#results").load("pagination-user.php", {'page':num});
             });
         });
     </script>
@@ -124,7 +123,9 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
 					<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" a href="panel.php">Opcje</a></li>
+								<li><a tabindex="-1" a href="cpass.php">Zmiana hasła</a></li>
+								<li class="divider"></li>
+								<li><a tabindex="-1" a href="cmail.php">Zmiana e-mail</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" a href="logout.php">Wyloguj</a></li>
 							</ul>
@@ -212,7 +213,7 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
 								<div class="media-body">
 									<?php
 									include_once ('functions.php');
-									 $obj = new commentsnolog();
+									 $obj = new commentsuser();
 
 									  /* CHANGE THESE SETTINGS FOR YOUR OWN DATABASE */
 									  $obj->host = 'localhost';

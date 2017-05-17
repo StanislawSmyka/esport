@@ -20,7 +20,14 @@ header("location: panel-ad.php");
 }
 else 
 {
-$error="błędne hasło";
+$error= <<<ENTRY_DISPLAY
+	   <div class="container">
+           <div class="alert alert-danger alert-dismissable fade in">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                 <strong>Błąd!</strong> Błędne hasło
+                  </div>
+                </div>
+ENTRY_DISPLAY;
 echo $error;
 }
 }

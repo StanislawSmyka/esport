@@ -22,6 +22,18 @@ $_SESSION['login_user']=$myusername;
 
 header("location: index-ad.php");
 }
+else
+{
+		      $error_display = <<<ENTRY_DISPLAY
+				   <div class="container">
+                    <div class="alert alert-danger alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Błąd!</strong> Błędna nazwa użytkownika lub hasło
+                    </div>
+                </div>
+ENTRY_DISPLAY;
+}
+			echo $error_display;
 }
 else 
 {
@@ -39,7 +51,6 @@ header("location: index.php");
 }
 else 
 {
-function display_error() {
 			      $error_display = <<<ENTRY_DISPLAY
 				   <div class="container">
                     <div class="alert alert-danger alert-dismissable fade in">
@@ -48,10 +59,8 @@ function display_error() {
                     </div>
                 </div>
 ENTRY_DISPLAY;
-					return $error_display;	
 			}
-			echo display_error();
-}
+			echo $error_display;
 }
 }
 ?>

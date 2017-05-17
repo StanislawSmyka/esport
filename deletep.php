@@ -14,7 +14,7 @@ $sql="DELETE from info WHERE id='$myid'";
 $result = mysqli_query($db, $sql);
 $sql1="DELETE from comments WHERE id='$myid'";
 $result1 = mysqli_query($db, $sql1);
-header("location: panel-ad.php");
+header("location: deletep.php");
 }
 ?>
 
@@ -112,7 +112,7 @@ header("location: panel-ad.php");
 					<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" a href="panel.php">Opcje</a></li>
+								<li><a tabindex="-1" a href="panel-ad.php">Opcje</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" a href="logout.php">Wyloguj</a></li>
 							</ul>

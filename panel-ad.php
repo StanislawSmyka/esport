@@ -2,6 +2,12 @@
 //Panel administratorski
 error_reporting(E_ERROR);
 include('lock-ad.php');
+
+$results = mysqli_query($db,"SELECT COUNT(*) FROM info");
+$get_total_rows = mysqli_fetch_array($results); //total records
+
+//break total records into pages
+$pages = ceil($get_total_rows[0]/$item_per_page);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,10 +22,29 @@ include('lock-ad.php');
     <meta name="description" content="Strona esportowa">
     <meta name="author" content="Stanisław Smyka Tomasz Matuszczak">
 
-    <title>Esports - panel użytkownika.</title>
+    <title>Esports -Panel Administratora</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
-
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.bootpag.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Wymagane pola -->
+    <script src="js/required.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#results").load("pagination-ad.php");  //initial page number to load
+            $(".pagination").bootpag({
+                total: <?php echo $pages; ?>,
+                page: 1,
+                maxVisible: 5 
+            }).on("page", function(e, num){
+                e.preventDefault();
+                $("#results").load("pagination-ad.php", {'page':num});
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -133,23 +158,8 @@ include('lock-ad.php');
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-md-12">
-									<?php
-									
-									  include_once ('functions.php');
-									  $obj = new CMSadmin();
-									  $obj->host = 'localhost';
-									  $obj->username = 'admin';
-									  $obj->password = 'pass';
-									  $obj->table = 'db';
-									  $obj->connect();
-									
-									  if ( $_POST )
-										$obj->write($_POST);
-									
-									  echo $obj->display_public();
-									
-									?>
-									<hr>
+									<div id="results"></div>
+                                    <div class="pagination"></div>
 								</div>
 							</div>
 						</div>
@@ -159,14 +169,6 @@ include('lock-ad.php');
       	</div> 
   	</div>
     <!-- /.container -->
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Wymagane pola -->
-    <script src="js/required.js"></script>
 
 </body>
 

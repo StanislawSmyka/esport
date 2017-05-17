@@ -1,9 +1,9 @@
 <?php
 error_reporting(E_ERROR);
 //Strona główna dla niezalgownaych użyktowników
-include("config.inc.php");
+include("config.php");
 
-$results = mysqli_query($connecDB,"SELECT COUNT(*) FROM info");
+$results = mysqli_query($db,"SELECT COUNT(*) FROM info");
 $get_total_rows = mysqli_fetch_array($results); //total records
 
 //break total records into pages

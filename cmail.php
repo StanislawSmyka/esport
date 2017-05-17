@@ -16,8 +16,15 @@ $newemail=mysqli_real_escape_string($db,$_POST['newemail']);;
 $query = "UPDATE user SET email='$newemail' WHERE username='$login_session'";
      if (!filter_var($newemail, FILTER_VALIDATE_EMAIL)) {
             $query = NULL;
-			$error='błędny mail';
-			echo $error;
+	$error= <<<ENTRY_DISPLAY
+	   <div class="container">
+           <div class="alert alert-danger alert-dismissable fade in">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                 <strong>Błąd!</strong> Błędne E-mail
+                  </div>
+                </div>
+ENTRY_DISPLAY;
+echo $error;
 			}
 			else
 			{
@@ -27,7 +34,14 @@ $query = "UPDATE user SET email='$newemail' WHERE username='$login_session'";
 	}
 else 
 {
-$error="błędne hasło";
+$error= <<<ENTRY_DISPLAY
+	   <div class="container">
+           <div class="alert alert-danger alert-dismissable fade in">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                 <strong>Błąd!</strong> Błędne hasło
+                  </div>
+                </div>
+ENTRY_DISPLAY;
 echo $error;
 }
 }

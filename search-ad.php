@@ -143,7 +143,6 @@ error_reporting(E_ERROR);
                                                 $title=$row['title'];
                                                 $bodytext=$row['bodytext'];
 												$count=$row['count'];
-												function display_entry($title,$bodytext,$id,$count) {
 													$entry_display .= <<<ENTRY_DISPLAY
                                                        <h2>$title</h2>
 														<div class="latest-wrapping">$bodytext</div>
@@ -154,9 +153,8 @@ error_reporting(E_ERROR);
 														<span class="badge">$count</span>
 														<hr>
 ENTRY_DISPLAY;
-												return $entry_display;
-												}
-												echo display_entry($title,$bodytext,$id,$count);
+ 
+												echo $entry_display;
                                             }
                                         }
                                     else

@@ -16,6 +16,7 @@ if($result) {
 header("location: panel-ad.php");
 } else {
   echo "Nieudało się stworzyć postu" . mysql_error();
+  echo "test github";
 }
 }
 ?>

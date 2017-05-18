@@ -176,7 +176,7 @@ ENTRY_DISPLAY;
 				<div class="form-group">
 					<div class="controls">
 						<label>Nazwa użytkownika:</label>
-						<input type="text" name="username" class="form-control" required/>
+						<input type="text" name="username" class="form-control"/>
 					</div>
 				</div>
 				<div class="form-group">

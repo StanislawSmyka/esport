@@ -131,3 +131,7 @@ li [class^="pull-right"] {
 .page_result{
 	padding: 0px;
 }
+
+.embed-responsive-custom {
+  padding-bottom: 168.75%;
+}

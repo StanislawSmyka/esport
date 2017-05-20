@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 20 Maj 2017, 16:31
+-- Czas generowania: 20 Maj 2017, 22:17
 -- Wersja serwera: 10.1.16-MariaDB
 -- Wersja PHP: 5.6.24
 
@@ -88,28 +88,8 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `title`, `date`, `created`, `modified`, `status`) VALUES
-(1, 'lol', '2017-01-10', '2017-01-10 12:55:50', '2017-01-10 12:55:50', 1),
-(2, '1', '2017-03-01', '2017-01-10 13:10:32', '2017-01-10 13:10:32', 1),
-(3, 'test', '2017-01-11', '2017-01-10 13:24:00', '2017-01-10 13:24:00', 1),
-(4, '121', '2017-01-10', '2017-01-10 13:25:01', '2017-01-10 13:25:01', 1),
-(5, 'test 2', '2017-01-27', '2017-01-10 13:43:54', '2017-01-10 13:43:54', 1),
-(6, 'test3', '2017-01-09', '2017-01-10 14:11:58', '2017-01-10 14:11:58', 1),
-(7, 'test4', '2017-01-25', '2017-01-10 14:12:15', '2017-01-10 14:12:15', 1),
-(8, 'test', '2017-01-19', '2017-01-11 15:31:30', '2017-01-11 15:31:30', 1),
-(9, 'test1', '2017-01-12', '2017-01-11 19:28:00', '2017-01-11 19:28:00', 1),
-(10, 'test', '2017-04-06', '2017-04-05 19:07:26', '2017-04-05 19:07:26', 1),
-(11, 'test2', '2017-04-07', '2017-04-06 22:32:55', '2017-04-06 22:32:55', 1),
-(12, 'sadasd', '2017-04-04', '2017-04-15 13:06:57', '2017-04-15 13:06:57', 1),
-(13, 'dsadsa', '2017-04-11', '2017-04-15 13:27:32', '2017-04-15 13:27:32', 1),
-(14, 'aa', '2017-04-03', '2017-04-15 14:06:18', '2017-04-15 14:06:18', 1),
-(15, 'sad', '2017-04-10', '2017-04-15 14:06:43', '2017-04-15 14:06:43', 1),
-(16, 'sadad', '2017-04-16', '2017-04-15 14:08:42', '2017-04-15 14:08:42', 1),
-(17, 'aad', '2017-04-02', '2017-04-15 14:09:15', '2017-04-15 14:09:15', 1),
-(18, 'sddsd', '2017-04-12', '2017-04-15 14:09:24', '2017-04-15 14:09:24', 1),
-(19, 'dsdsds', '2017-04-09', '2017-04-15 14:09:31', '2017-04-15 14:09:31', 1),
-(20, 'sdad', '2017-04-01', '2017-04-15 14:13:31', '2017-04-15 14:13:31', 1),
-(21, 'dasds', '2017-04-18', '2017-04-15 14:16:52', '2017-04-15 14:16:52', 1),
-(22, 'test', '2017-05-09', '2017-05-16 19:17:18', '2017-05-16 19:17:18', 1);
+(23, 'test', '2017-05-02', '2017-05-20 21:08:13', '2017-05-20 21:08:13', 1),
+(24, 'test2', '2017-05-19', '2017-05-20 21:09:04', '2017-05-20 21:09:04', 1);
 
 -- --------------------------------------------------------
 
@@ -139,6 +119,27 @@ INSERT INTO `info` (`id`, `title`, `bodytext`, `created`, `count`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `links`
+--
+
+CREATE TABLE `links` (
+  `id` int(11) NOT NULL,
+  `link_lol` varchar(255) NOT NULL,
+  `link_hs` varchar(255) NOT NULL,
+  `link_csgo` varchar(255) NOT NULL,
+  `link_hots` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `links`
+--
+
+INSERT INTO `links` (`id`, `link_lol`, `link_hs`, `link_csgo`, `link_hots`) VALUES
+(2, 'https://www.youtube.com/embed/Zq7Linjywzs?wmode=transparent', 'https://www.youtube.com/embed/TadaR5cZy8I?wmode=transparent', 'https://www.youtube.com/embed/01qaUdD6cgg?wmode=transparent', 'https://www.youtube.com//embed/czIhN7dhgxU?wmode=transparent');
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `streams`
 --
 
@@ -153,10 +154,10 @@ CREATE TABLE `streams` (
 --
 
 INSERT INTO `streams` (`id`, `game`, `channelname`) VALUES
-(1, 'League of Legends', 'nightblue3'),
-(2, 'Hearthstone', ''),
-(3, 'CS:GO', ''),
-(4, 'Heroes of the Storm', '');
+(1, 'League of Legends', 'riotgames'),
+(2, 'Hearthstone', 'forsenlol'),
+(3, 'CS:GO', 'esl_csgo'),
+(4, 'Heroes of the Storm', 'blizzheroes');
 
 -- --------------------------------------------------------
 
@@ -208,6 +209,12 @@ ALTER TABLE `info`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `links`
+--
+ALTER TABLE `links`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `streams`
 --
 ALTER TABLE `streams`
@@ -233,12 +240,17 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT dla tabeli `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT dla tabeli `info`
 --
 ALTER TABLE `info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT dla tabeli `links`
+--
+ALTER TABLE `links`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT dla tabeli `streams`
 --
@@ -248,7 +260,7 @@ ALTER TABLE `streams`
 -- AUTO_INCREMENT dla tabeli `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

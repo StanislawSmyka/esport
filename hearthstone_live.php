@@ -42,7 +42,7 @@ include "config.php";
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-noad.php">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-lol.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
 								<li><a href="leagueoflegends_live.php" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
@@ -52,9 +52,9 @@ include "config.php";
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Hearthstone<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-hs.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="#">Na żywo</a></li>
+								<li><a tabindex="-1" href="hearthstone_live.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://eu.battle.net/hearthstone/pl/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -62,9 +62,9 @@ include "config.php";
 					<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">CS:GO<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-csgo.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="#">Na żywo</a></li>
+								<li><a tabindex="-1" href="csgo_live.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="blog.counter-strike.net/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -72,9 +72,9 @@ include "config.php";
 					<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Heroes of the Storm<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-hots.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="#">Na żywo</a></li>
+								<li><a tabindex="-1" href="hots_live.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://eu.battle.net/heroes/pl/" target="blank">Oficjalna strona gry</a></li>
 							</ul>

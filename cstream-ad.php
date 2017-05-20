@@ -152,18 +152,17 @@ echo $error;
                             <input type="password" name="pass" class="form-control"/>
                         </div>
                     </div>
-                    
-                    <div id="stream">
-                        <button type="submit" class="btn btn-info game btn-block" value="submit">League of Legends</button>
-                        <button type="submit" class="btn btn-info game btn-block" value="submit">Hearthstone</button>
-                        <button type="submit" class="btn btn-info game btn-block" value="submit">CS:GO</button>
-                        <button type="submit" class="btn btn-info game btn-block" value="submit">Heroes of the Storm</button>
-                        <div class="controls">
-                            <hr/>
-                            <label>Podaj nazwę stream:</label>
-                            <input type="text" name="stream" class="form-control"/>
+                        <div id="stream">
+                            <button type="submit" class="btn btn-info game btn-block" value="League of Legends">League of Legends</button>
+                            <button type="submit" class="btn btn-info game btn-block" value="Hearthstone">Hearthstone</button>
+                            <button type="submit" class="btn btn-info game btn-block" value="CS:GO">CS:GO</button>
+                            <button type="submit" class="btn btn-info game btn-block" value="Heroes of the Storm">Heroes of the Storm</button>
+                            <div class="controls">
+                                <hr/>
+                                <label>Podaj nazwę stream:</label>
+                                <input type="text" name="stream" class="form-control"/>
+                            </div>
                         </div>
-                    </div>
                     <br>
                     <button type="submit" class="btn btn-default" value="submit">Wyślij</button>
                 </form>

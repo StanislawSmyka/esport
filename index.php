@@ -107,13 +107,17 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://eu.battle.net/heroes/pl/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
+					</li>
+                    <li class="dropdown">
+							<a href="cal-user.php">Kalendarz rozgrywek</a>
+							
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
                     <li>
 						<form class="navbar-form" action="./searchuser.php" method="get">
 							<div class="input-group">
-								<input type="text" size="15" class="form-control" name="search">
+								<input type="text" size="10" class="form-control" name="search">
 								<div class="input-group-btn">
 									<button class="btn btn-default" type="submit" value="Szukaj">Szukaj</button>
 								</div>

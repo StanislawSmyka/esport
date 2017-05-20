@@ -71,9 +71,7 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-lol-user.php">Kalendarz rozgrywek</a></li>
-								<li class="divider"></li>
-								<li><a href="leagueoflegends_live-user.php" tabindex="-1" href="#">Na żywo</a></li>
+								<li><a tabindex="-1" href="leagueoflegends_live-user.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -81,8 +79,6 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Hearthstone<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-hs-user.php">Kalendarz rozgrywek</a></li>
-								<li class="divider"></li>
 								<li><a tabindex="-1" href="hearthstone_live-user.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://eu.battle.net/hearthstone/pl/" target="blank">Oficjalna strona gry</a></li>
@@ -91,8 +87,6 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
 					<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">CS:GO<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-csgo-user.php">Kalendarz rozgrywek</a></li>
-								<li class="divider"></li>
 								<li><a tabindex="-1" href="csgo_live-user.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="blog.counter-strike.net/" target="blank">Oficjalna strona gry</a></li>
@@ -101,16 +95,13 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
 					<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Heroes of the Storm<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-hots-user">Kalendarz rozgrywek</a></li>
-								<li class="divider"></li>
 								<li><a tabindex="-1" href="hots_live-user.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://eu.battle.net/heroes/pl/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
 					</li>
                     <li class="dropdown">
-							<a href="cal-user.php">Kalendarz rozgrywek</a>
-							
+                        <a href="cal-user.php">Kalendarz rozgrywek</a>
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -149,10 +140,10 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
             <!-- poczatek nadchodzacych wydarzen -->
             <div class="col-md-12">
                 <div class="panel">
-                   <div class="panel-heading" style="background-color:#334d63">Nadchodzące wydarzenia</div>
+                    <div class="panel-heading" style="background-color:#334d63">Nadchodzące wydarzenia</div>
                     <div class="col-md-12">
                         <div class="row" style="background-color:#fff">
-    						<?php
+						<?php
 		$results = mysqli_query($db, "SELECT * FROM links");
 					while($row = mysqli_fetch_array($results))
 					{
@@ -202,7 +193,6 @@ ENTRY_DISPLAY;
 					}
 echo $slide;
 			?>
-                        </div>
                         </div>
                     </div>
                 </div>

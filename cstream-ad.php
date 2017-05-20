@@ -3,34 +3,11 @@ include("lock-ad.php");
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 { 
-$pass=mysqli_real_escape_string($db,$_POST['pass']);
-$pass=md5($pass);
-
-$sql="SELECT id FROM admin WHERE username='$login_session' and passcode='$pass'";
-$result=mysqli_query($db,$sql);
-$row=mysqli_fetch_array($result,MYSQLI_ASSOC);
-$count=mysqli_num_rows($result);
-if($count==1)
-{
 $game=mysqli_real_escape_string($db,$_POST['game']);
 $stream=mysqli_real_escape_string($db,$_POST['stream']);
 $query = "UPDATE streams SET channelname='$stream' WHERE game ='$game'";
 			$result = mysqli_query($db, $query);
 			header("location: panel-ad.php");
-	
-	}
-else 
-{
-$error= <<<ENTRY_DISPLAY
-	   <div class="container">
-           <div class="alert alert-danger alert-dismissable fade in">
-              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                 <strong>Błąd!</strong> Błędne hasło
-                  </div>
-                </div>
-ENTRY_DISPLAY;
-echo $error;
-}
 }
 ?>
 <!DOCTYPE html>
@@ -148,11 +125,6 @@ echo $error;
                 <form action="" method="post">
                     <div class="form-group">
                         <div class="controls">
-                            <label>Podaj hasło:</label>
-                            <input type="password" name="pass" class="form-control"/>
-                        </div>
-                        <div class="controls">
-                            <hr/>
                             <label>Podaj nazwę stream:</label>
                             <input type="text" name="stream" class="form-control"/>
                         </div>

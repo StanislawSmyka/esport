@@ -1,7 +1,33 @@
 <?php
-include_once('functions.php');
-error_reporting(E_ERROR);
-include('lock.php');
+include("lock-ad.php");
+
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{ 
+$i=mysqli_real_escape_string($db,$_POST['i']);
+$link=mysqli_real_escape_string($db,$_POST['link']);
+switch ($i):
+    case 0:
+$query = "UPDATE links SET link_lol='$link'";
+			$result = mysqli_query($db, $query);
+			header("location: panel-ad.php");
+			break;
+    case 1:
+		$query = "UPDATE links SET link_hs='$link'";
+			$result = mysqli_query($db, $query);
+			header("location: panel-ad.php");
+			break;
+    case 2:
+$query = "UPDATE links SET link_csgo='$link'";
+			$result = mysqli_query($db, $query);
+			header("location: panel-ad.php");
+			break;
+    case 3;
+        $query = "UPDATE links SET link_hots='$link'";
+			$result = mysqli_query($db, $query);
+			header("location: panel-ad.php");
+			break;
+endswitch;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,11 +42,9 @@ include('lock.php');
     <meta name="description" content="Strona esportowa">
     <meta name="author" content="Stanisław Smyka Tomasz Matuszczak">
 
-    <title>Esports - kalendarz rozgrywek.</title>
-	<script src="js/jquerycal.min.js"></script>
+    <title>Esports - zmiana linków na stronie głównej.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
-	<link href="css/calendar.css" rel="stylesheet">
 
 </head>
 
@@ -37,19 +61,19 @@ include('lock.php');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">
+                <a class="navbar-brand" href="index-ad.php">
                     <img src="images/esports.jpeg" alt="">
                 </a>
             </div>
-                       <!-- nav linki w menu -->
+            <!-- nav linki w menu -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-lol-user.php">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-lol-ad.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a href="leagueoflegends_live-user.php" tabindex="-1" href="#">Na żywo</a></li>
+								<li><a href="leagueoflegends_live-ad.php" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -57,9 +81,9 @@ include('lock.php');
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Hearthstone<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-hs-user.php">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-hs-ad.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="hearthstone_live-user.php">Na żywo</a></li>
+								<li><a tabindex="-1" href="hearthstone_live-ad.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://eu.battle.net/hearthstone/pl/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -67,9 +91,9 @@ include('lock.php');
 					<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">CS:GO<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-csgo-user.php">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-csgo-ad.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="csgo_live-user.php">Na żywo</a></li>
+								<li><a tabindex="-1" href="csgo_live-ad.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="blog.counter-strike.net/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -77,9 +101,9 @@ include('lock.php');
 					<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Heroes of the Storm<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-hots-user">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-hots-ad.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="hots_live-user.php">Na żywo</a></li>
+								<li><a tabindex="-1" href="hots_live-ad.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://eu.battle.net/heroes/pl/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -87,7 +111,7 @@ include('lock.php');
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
                     <li>
-						<form class="navbar-form" action="./searchuser.php" method="get">
+						<form class="navbar-form" action="./search-ad.php" method="get">
 							<div class="input-group">
 								<input type="text" size="15" class="form-control" name="search">
 								<div class="input-group-btn">
@@ -97,12 +121,9 @@ include('lock.php');
 						</form>
 					</li>
 					<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?>
-                                <b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" a href="cpass.php">Zmiana hasła</a></li>
-								<li class="divider"></li>
-								<li><a tabindex="-1" a href="cmail.php">Zmiana e-mail</a></li>
+								<li><a tabindex="-1" a href="panel-ad.php">Opcje</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" a href="logout.php">Wyloguj</a></li>
 							</ul>
@@ -115,15 +136,30 @@ include('lock.php');
     </nav>
 
     <!-- tresc strony -->
-    <div class="container">
-		<h1 class="page-header">Rozgrywki</h1>
-        <div class="col-md-12">
-				<div class="panel">
-                    <div class="panel-body">
-                        <?php echo getCalendernoad(); ?>
+ <div class="container">
+        <div class="row">
+			<h1 class="page-header">Zmień linki na stronie głównej</h1>
+            <div class="col-lg-4">
+                
+                <form action="" method="post">
+                    <div class="form-group">
+                        <div class="controls">
+                            <label>Podaj link youtube:</label>
+                            <input type="text" name="link" class="form-control"/>
+                        </div>
+                        <div class="controls">
+                            <hr/>
+                            <label>Wybierz kategorię gry:</label>
+                            <button type="submit" class="btn btn-info btn-block" name="i" value="0">League of Legends</button>
+                            <button type="submit" class="btn btn-info btn-block" name="i" value="1">Hearthstone</button>
+                            <button type="submit" class="btn btn-info btn-block" name="i" value="2">CS:GO</button>
+                            <button type="submit" class="btn btn-info btn-block" name="i" value="3">Heroes of the Storm</button>
+                        </div>
                     </div>
-				</div>
-        </div>
+                    <br>
+                </form>
+            </div> 
+    </div>
     </div>
     <!-- /.container -->
 

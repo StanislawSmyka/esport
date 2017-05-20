@@ -71,9 +71,9 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-user.php">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-lol-user.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="leagueoflegends_live-user.php">Na żywo</a></li>
+								<li><a href="leagueoflegends_live-user.php" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -81,9 +81,9 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Hearthstone<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-hs-user.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="hearthstone_live.php">Na żywo</a></li>
+								<li><a tabindex="-1" href="hearthstone_live-user.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://eu.battle.net/hearthstone/pl/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -91,9 +91,9 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
 					<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">CS:GO<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-csgo-user.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="#">Na żywo</a></li>
+								<li><a tabindex="-1" href="csgo_live-user.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="blog.counter-strike.net/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -101,16 +101,16 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
 					<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Heroes of the Storm<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-hots-user">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="#">Na żywo</a></li>
+								<li><a tabindex="-1" href="hots_live-user.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://eu.battle.net/heroes/pl/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li>
+                    <li>
 						<form class="navbar-form" action="./searchuser.php" method="get">
 							<div class="input-group">
 								<input type="text" size="15" class="form-control" name="search">
@@ -121,7 +121,8 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
 						</form>
 					</li>
 					<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?>
+                                <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a tabindex="-1" a href="cpass.php">Zmiana hasła</a></li>
 								<li class="divider"></li>
@@ -147,6 +148,15 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
                    <div class="panel-heading" style="background-color:#334d63">Nadchodzące wydarzenia</div>
                     <div class="col-md-12">
                         <div class="row" style="background-color:#fff">
+    						<?php
+		$results = mysqli_query($db, "SELECT * FROM links");
+					while($row = mysqli_fetch_array($results))
+					{
+					$linklol = stripslashes($row['link_lol']);
+					$linkhs = stripslashes($row['link_hs']);
+					$linkcsgo = stripslashes($row['link_csgo']);
+					$linkhots = stripslashes($row['link_hots']);
+						      $slide = <<<ENTRY_DISPLAY
                             <ul class="nav nav-pills" role="tablist" id="myTab">
                                 <li role="presentation" class="active">
                                     <a href="#lol" role="tab" data-toggle="tab">League of Legends</a>
@@ -165,25 +175,30 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
                             <div class="tab-content">
                                 <div class="tab-pane in active" id="lol">
                                     <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe id="video1" class="embed-responsive-item" allowfullscreen="allowfullscreen"  src="https://www.youtube.com/embed/Zq7Linjywzs?wmode=transparent"></iframe>
+                                        <iframe class="embed-responsive-item" allowfullscreen="allowfullscreen" src="$linklol"></iframe>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="hs">
                                     <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe id="video2" class="embed-responsive-item" allowfullscreen="allowfullscreen"  src="https://www.youtube.com/embed/TadaR5cZy8I?wmode=transparent"></iframe>
+                                        <iframe class="embed-responsive-item" allowfullscreen="allowfullscreen" src="$linkhs"></iframe>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="csgo">
                                     <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe id="video3" class="embed-responsive-item" allowfullscreen="allowfullscreen"  src="https://www.youtube.com/embed/01qaUdD6cgg?wmode=transparent"></iframe>
+                                        <iframe class="embed-responsive-item" allowfullscreen="allowfullscreen" src="$linkcsgo"></iframe>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="hots">
                                     <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe id="video3" class="embed-responsive-item" allowfullscreen="allowfullscreen"  src="https://www.youtube.com//embed/czIhN7dhgxU?wmode=transparent"></iframe>
+                                        <iframe class="embed-responsive-item" allowfullscreen="allowfullscreen" src="$linkhots"></iframe>
                                     </div>
                                 </div>
                             </div>
+ENTRY_DISPLAY;
+					}
+echo $slide;
+			?>
+                        </div>
                         </div>
                     </div>
                 </div>

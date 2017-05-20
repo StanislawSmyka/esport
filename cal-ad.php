@@ -1,23 +1,7 @@
 <?php
-//panel do usuwania postów
+include_once('functions.php');
 include('lock-ad.php');
-error_reporting(E_ERROR);
-session_start();
-
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{ 
-
-$myid=mysqli_real_escape_string($db,$_POST['id']); 
-$sql="SELECT id FROM info WHERE id='$myid'";
-echo $myid;
-$sql="DELETE from info WHERE id='$myid'";
-$result = mysqli_query($db, $sql);
-$sql1="DELETE from comments WHERE id='$myid'";
-$result1 = mysqli_query($db, $sql1);
-header("location: deletep.php");
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,9 +15,11 @@ header("location: deletep.php");
     <meta name="description" content="Strona esportowa">
     <meta name="author" content="Stanisław Smyka Tomasz Matuszczak">
 
-    <title>Esports - usuwanie postu.</title>
+    <title>Esports - kalendarz rozgrywek.</title>
+	<script src="js/jquerycal.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
+	<link href="css/calendar.css" rel="stylesheet">
 
 </head>
 
@@ -54,7 +40,7 @@ header("location: deletep.php");
                     <img src="images/esports.jpeg" alt="">
                 </a>
             </div>
-            <!-- nav linki w menu -->
+                      <!-- nav linki w menu -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
@@ -126,51 +112,15 @@ header("location: deletep.php");
 
     <!-- tresc strony -->
     <div class="container">
-        <div class="row">
-			<h1 class="page-header">Usuwanie postów</h1>
-            <div class="col-lg-4">
-                <form action="" method="post">
-				<div class="form-group">
-				    <div class="controls">
-				        <label>Podaj id:</label>
-						<input type="text" name="id" class="form-control"/>
-					</div>
-				</div>
-				<button type="submit" class="btn btn-default" value="submit">Usuń</button>
-                </form>
-                <br/>
-            </div>
+		<h1 class="page-header">Rozgrywki</h1>
         <div class="col-md-12">
-        <div class="panel">
-            <div class="panel-heading" style="background-color:#555">Lista postów</div> 
-            <div class="panel-body">
-                <div class="row">
-				<div class="col-md-9">
-				        <?php
-									
-                        include_once ('functions.php');
-				        $obj = new CMSdelete();
-				        $obj->host = 'localhost';
-				        $obj->username = 'admin';
-				        $obj->password = 'pass';
-				        $obj->table = 'db';
-				        $obj->connect();
-									
-				        if ( $_POST )
-				            $obj->write($_POST);
-									
-				            echo $obj->display_public();
-									
-				        ?>
-				        <hr>
-                </div>
+				<div class="panel">
+                    <div class="panel-body">
+                        <?php echo getCalender(); ?>
+                    </div>
 				</div>
-            </div>
-        </div>
-        </div>
         </div>
     </div>
-    
     <!-- /.container -->
 
     <!-- jQuery -->
@@ -180,7 +130,7 @@ header("location: deletep.php");
     <script src="js/bootstrap.min.js"></script>
     <!-- Wymagane pola -->
     <script src="js/required.js"></script>
-
+    
 </body>
 
 </html>

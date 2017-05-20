@@ -1,6 +1,5 @@
 <?php
-include_once('functions.php');
-include('lock-ad.php');
+include('functions.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +8,9 @@ include('lock-ad.php');
 
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <meta charset="utf-8">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Strona esportowa">
@@ -36,7 +37,7 @@ include('lock-ad.php');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index-ad.php">
+                <a class="navbar-brand" href="index-nolog.php">
                     <img src="images/esports.jpeg" alt="">
                 </a>
             </div>
@@ -46,9 +47,9 @@ include('lock-ad.php');
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal.php">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-lol.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a href="leagueoflegends_live-ad.php" tabindex="-1" href="#">Na żywo</a></li>
+								<li><a href="leagueoflegends_live.php" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -56,9 +57,9 @@ include('lock-ad.php');
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Hearthstone<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-hs.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="#">Na żywo</a></li>
+								<li><a tabindex="-1" href="hearthstone_live.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://eu.battle.net/hearthstone/pl/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -66,9 +67,9 @@ include('lock-ad.php');
 					<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">CS:GO<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-csgo.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="#">Na żywo</a></li>
+								<li><a tabindex="-1" href="csgo_live.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="blog.counter-strike.net/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -76,9 +77,9 @@ include('lock-ad.php');
 					<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Heroes of the Storm<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-hots.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="#">Na żywo</a></li>
+								<li><a tabindex="-1" href="hots_live.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://eu.battle.net/heroes/pl/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -86,7 +87,7 @@ include('lock-ad.php');
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
                     <li>
-						<form class="navbar-form" action="./search-ad.php" method="get">
+						<form class="navbar-form" action="./search.php" method="get">
 							<div class="input-group">
 								<input type="text" size="15" class="form-control" name="search">
 								<div class="input-group-btn">
@@ -96,12 +97,7 @@ include('lock-ad.php');
 						</form>
 					</li>
 					<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a tabindex="-1" a href="panel-ad.php">Opcje</a></li>
-								<li class="divider"></li>
-								<li><a tabindex="-1" a href="logout.php">Wyloguj</a></li>
-							</ul>
+							<a href="login.php">Zaloguj się</a>
 					</li>
 				</ul>
             </div>
@@ -116,7 +112,7 @@ include('lock-ad.php');
         <div class="col-md-12">
 				<div class="panel">
                     <div class="panel-body">
-                        <?php echo getCalender(); ?>
+                        <?php echo getCalendernoad(); ?>
                     </div>
 				</div>
         </div>
@@ -130,7 +126,7 @@ include('lock-ad.php');
     <script src="js/bootstrap.min.js"></script>
     <!-- Wymagane pola -->
     <script src="js/required.js"></script>
-    
+
 </body>
 
 </html>

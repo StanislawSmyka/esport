@@ -23,7 +23,7 @@ $query = "UPDATE streams SET channelname='$stream' WHERE game ='$game'";
     <meta name="description" content="Strona esportowa">
     <meta name="author" content="Stanisław Smyka Tomasz Matuszczak">
 
-    <title>Esports - zmiana live stream.</title>
+    <title>Esports - zmiana live streamu.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 

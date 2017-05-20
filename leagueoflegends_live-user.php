@@ -1,9 +1,9 @@
-
 <?php
-include("lock.php");
-error_reporting(E_ERROR);
-//Strona główna dla niezalgownaych użyktowników
+//streamy itp.
+include('lock.php');
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +17,7 @@ error_reporting(E_ERROR);
     <meta name="description" content="Strona esportowa">
     <meta name="author" content="Stanisław Smyka Tomasz Matuszczak">
 
-    <title>Esports - wyniki wyszukiwania.</title>
+    <title>Esports - League of Legends na żywo.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 
@@ -46,9 +46,9 @@ error_reporting(E_ERROR);
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-noad.php">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-user.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="leagueoflegends_live-user.php">Na żywo</a></li>
+								<li><a href="leagueoflegends_live-user.php" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -88,15 +88,16 @@ error_reporting(E_ERROR);
                     <li>
 						<form class="navbar-form" action="./searchuser.php" method="get">
 							<div class="input-group">
-								<input type="text" size="15" class="form-control" name="search" value="<?php echo $_GET["search"]; ?>">
+								<input type="text" size="15" class="form-control" name="search">
 								<div class="input-group-btn">
 									<button class="btn btn-default" type="submit" value="Szukaj">Szukaj</button>
 								</div>
 							</div>
 						</form>
 					</li>
-				    <li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
+					<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?>
+                                <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a tabindex="-1" a href="cpass.php">Zmiana hasła</a></li>
 								<li class="divider"></li>
@@ -114,63 +115,28 @@ error_reporting(E_ERROR);
 
     <!-- tresc strony -->
     <div class="container">
-		<h1 class="page-header">Wyniki wyszukiwania:</h1>
         <div class="no-gutter row">
-			<!-- poczatek najnowszych -->
-      		<div class="col-md-12">
-                <div class="panel">
-                    <div class="panel-body">
-							<div class="row">
-								<div class="col-md-12">
-                                    <?php
-                                    $keyword=$_GET["search"];
-                                    if ($keyword != ""){
-                                        $i=0;
-                                        $terms=explode(" ",$keyword);
-                                        $query="SELECT * FROM info WHERE ";
-
-                                        foreach ($terms as $each) {
-                                            $i++;
-                                            if ($i==1)
-                                                $query .="title LIKE '%$each%' OR bodytext LIKE '%$each%'";
-                                            else
-                                                $query .="OR title LIKE '%$each%' OR bodytext LIKE '%$each%'";
-                                        }
-
-                                        $query=mysqli_query($db,$query);
-                                        $numrows=mysqli_num_rows($query);
-                                        if ($numrows>0){
-                                            while ($row=mysqli_fetch_assoc($query)){
-                                                $id=$row['id'];
-                                                $title=$row['title'];
-                                                $bodytext=$row['bodytext'];
-												$count=$row['count'];
-													$entry_display .= <<<ENTRY_DISPLAY
-                                                       <h2>$title</h2>
-														<div class="latest-wrapping">$bodytext</div>
-														 <a href="readmore-user.php?idp=$id&count=$count">... więcej</a>
-														  <h6><span class="glyphicon glyphicon-calendar"></span>$created</h6>
-														
-														<span class="glyphicon glyphicon-pencil"></span>
-														<span class="badge">$count</span>
-														<hr>
-ENTRY_DISPLAY;
-
-												echo $entry_display;
-                                            }
-                                        }
-                                    else
-                                        echo "Brak wyników dla ''$keyword''.";
-                                         }
-                                    else
-                                        echo "Nic nie wyszukałeś.";
-				                    ?>
-                                </div>
-							</div>
-						</div>
+		<?php
+		$results = mysqli_query($db, "SELECT * FROM streams Where game='League of Legends' ");
+					while($row = mysqli_fetch_array($results))
+					{
+					$channelname = stripslashes($row['channelname']);
+						      $stream = <<<ENTRY_DISPLAY
+            <div class="col-md-9">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe src="https://player.twitch.tv/?channel='$channelname'" allowfullscreen="allowfullscreen" frameborder="0" scrolling="no"></iframe>
                 </div>
-			</div> 
-		</div>
+            </div>
+            <div class="col-md-3">
+                <div class="embed-responsive embed-responsive-custom">
+                  <iframe src="https://www.twitch.tv/$channelname/chat?popout=" frameborder="0"></iframe>
+                </div>
+            </div>
+ENTRY_DISPLAY;
+					}
+echo $stream;
+			?>
+        </div>
     </div>
     <!-- /.container -->
 
@@ -181,7 +147,7 @@ ENTRY_DISPLAY;
     <script src="js/bootstrap.min.js"></script>
     <!-- Wymagane pola -->
     <script src="js/required.js"></script>
-
+    
 </body>
 
 </html>

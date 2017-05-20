@@ -1,8 +1,37 @@
-
 <?php
-include("lock.php");
-error_reporting(E_ERROR);
-//Strona główna dla niezalgownaych użyktowników
+include("lock-ad.php");
+
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{ 
+$pass=mysqli_real_escape_string($db,$_POST['pass']);
+$pass=md5($pass);
+
+$sql="SELECT id FROM admin WHERE username='$login_session' and passcode='$pass'";
+$result=mysqli_query($db,$sql);
+$row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+$count=mysqli_num_rows($result);
+if($count==1)
+{
+$game=mysqli_real_escape_string($db,$_POST['game']);
+$stream=mysqli_real_escape_string($db,$_POST['stream']);
+$query = "UPDATE streams SET channelname='$stream' WHERE game ='$game'";
+			$result = mysqli_query($db, $query);
+			header("location: panel-ad.php");
+	
+	}
+else 
+{
+$error= <<<ENTRY_DISPLAY
+	   <div class="container">
+           <div class="alert alert-danger alert-dismissable fade in">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                 <strong>Błąd!</strong> Błędne hasło
+                  </div>
+                </div>
+ENTRY_DISPLAY;
+echo $error;
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +46,7 @@ error_reporting(E_ERROR);
     <meta name="description" content="Strona esportowa">
     <meta name="author" content="Stanisław Smyka Tomasz Matuszczak">
 
-    <title>Esports - wyniki wyszukiwania.</title>
+    <title>Esports - zmiana e-mail.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 
@@ -36,7 +65,7 @@ error_reporting(E_ERROR);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">
+                <a class="navbar-brand" href="index-ad.php">
                     <img src="images/esports.jpeg" alt="">
                 </a>
             </div>
@@ -46,9 +75,9 @@ error_reporting(E_ERROR);
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-noad.php">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="leagueoflegends_live-user.php">Na żywo</a></li>
+								<li><a href="leagueoflegends_live-ad.php" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -85,22 +114,20 @@ error_reporting(E_ERROR);
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
-                    <li>
-						<form class="navbar-form" action="./searchuser.php" method="get">
+					<li>
+						<form class="navbar-form" action="./search-ad.php" method="get">
 							<div class="input-group">
-								<input type="text" size="15" class="form-control" name="search" value="<?php echo $_GET["search"]; ?>">
+								<input type="text" size="15" class="form-control" name="search">
 								<div class="input-group-btn">
 									<button class="btn btn-default" type="submit" value="Szukaj">Szukaj</button>
 								</div>
 							</div>
 						</form>
 					</li>
-				    <li class="dropdown">
+					<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" a href="cpass.php">Zmiana hasła</a></li>
-								<li class="divider"></li>
-								<li><a tabindex="-1" a href="cmail.php">Zmiana e-mail</a></li>
+								<li><a tabindex="-1" a href="panel-ad.php">Opcje</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" a href="logout.php">Wyloguj</a></li>
 							</ul>
@@ -113,64 +140,33 @@ error_reporting(E_ERROR);
     </nav>
 
     <!-- tresc strony -->
-    <div class="container">
-		<h1 class="page-header">Wyniki wyszukiwania:</h1>
-        <div class="no-gutter row">
-			<!-- poczatek najnowszych -->
-      		<div class="col-md-12">
-                <div class="panel">
-                    <div class="panel-body">
-							<div class="row">
-								<div class="col-md-12">
-                                    <?php
-                                    $keyword=$_GET["search"];
-                                    if ($keyword != ""){
-                                        $i=0;
-                                        $terms=explode(" ",$keyword);
-                                        $query="SELECT * FROM info WHERE ";
-
-                                        foreach ($terms as $each) {
-                                            $i++;
-                                            if ($i==1)
-                                                $query .="title LIKE '%$each%' OR bodytext LIKE '%$each%'";
-                                            else
-                                                $query .="OR title LIKE '%$each%' OR bodytext LIKE '%$each%'";
-                                        }
-
-                                        $query=mysqli_query($db,$query);
-                                        $numrows=mysqli_num_rows($query);
-                                        if ($numrows>0){
-                                            while ($row=mysqli_fetch_assoc($query)){
-                                                $id=$row['id'];
-                                                $title=$row['title'];
-                                                $bodytext=$row['bodytext'];
-												$count=$row['count'];
-													$entry_display .= <<<ENTRY_DISPLAY
-                                                       <h2>$title</h2>
-														<div class="latest-wrapping">$bodytext</div>
-														 <a href="readmore-user.php?idp=$id&count=$count">... więcej</a>
-														  <h6><span class="glyphicon glyphicon-calendar"></span>$created</h6>
-														
-														<span class="glyphicon glyphicon-pencil"></span>
-														<span class="badge">$count</span>
-														<hr>
-ENTRY_DISPLAY;
-
-												echo $entry_display;
-                                            }
-                                        }
-                                    else
-                                        echo "Brak wyników dla ''$keyword''.";
-                                         }
-                                    else
-                                        echo "Nic nie wyszukałeś.";
-				                    ?>
-                                </div>
-							</div>
-						</div>
-                </div>
-			</div> 
-		</div>
+ <div class="container">
+        <div class="row">
+			<h1 class="page-header">Zmień adres e-mail</h1>
+            <div class="col-lg-4">
+                <form action="" method="post">
+				<div class="form-group">
+					<div class="controls">
+						<label>Podaj hasło:</label>
+						<input type="password" name="pass" class="form-control"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="controls">
+						<label>Podaj nazwe gry:</label>
+						<input type="text" name="game" class="form-control"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="controls">
+						<label>Podaj nazwe stream:</label>
+						<input type="text" name="stream" class="form-control"/>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-default" value="submit">Wyślij</button>
+                </form>
+            </div> 
+    </div>
     </div>
     <!-- /.container -->
 

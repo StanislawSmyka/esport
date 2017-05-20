@@ -147,6 +147,7 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
 							<li><a href="deletep.php">Usuń post</a></li>
 							<li><a href="cpass-ad.php">Zmień hasło</a></li>
 							<li><a href="cmail-ad.php">Zmień e-mail</a></li>
+							<li><a href="cstream-ad.php">Zmień stream</a></li>
 							</ul>
 						</div>
 				</div>

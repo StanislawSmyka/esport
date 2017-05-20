@@ -66,7 +66,7 @@ header("location: readmore-user.php?idp=$idp&count=$count");
 							<ul class="dropdown-menu">
 								<li><a tabindex="-1" href="cal-user.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a href="leagueoflegends_live.php" tabindex="-1" href="#">Na żywo</a></li>
+								<li><a href="leagueoflegends_live-user.php" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>

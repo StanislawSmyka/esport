@@ -112,16 +112,26 @@ include('lock-ad.php');
     <!-- tresc strony -->
     <div class="container">
         <div class="no-gutter row">
+		<?php
+		$results = mysqli_query($db, "SELECT * FROM streams Where game='League of Legends' ");
+					while($row = mysqli_fetch_array($results))
+					{
+					$channelname = stripslashes($row['channelname']);
+						      $stream = <<<ENTRY_DISPLAY
             <div class="col-md-9">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe src="https://player.twitch.tv/?channel=riotgames" allowfullscreen="allowfullscreen" frameborder="0" scrolling="no"></iframe>
+                    <iframe src="https://player.twitch.tv/?channel='$channelname'" allowfullscreen="allowfullscreen" frameborder="0" scrolling="no"></iframe>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="embed-responsive embed-responsive-custom">
-                <iframe src="https://www.twitch.tv/riotgames/chat?popout=" frameborder="0"></iframe>
+                  <iframe src="https://www.twitch.tv/$channelname/chat?popout=" frameborder="0"></iframe>
                 </div>
             </div>
+ENTRY_DISPLAY;
+					}
+echo $stream;
+			?>
         </div>
     </div>
     <!-- /.container -->

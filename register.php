@@ -23,27 +23,25 @@ if ($_POST["g-recaptcha-response"]) {
 
 //Rejestrowanie użytkoników
 error_reporting(E_ERROR);
-include "config-ad.php";
+include "config.php";
 
 if ($response != null && $response->success) {
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $q = "SELECT id FROM user";
-        $res = mysqli_query($db,$q);
-        $rowsnum = $res->num_rows;
-        $id=$rowsnum+1;
-
+     
         $username=mysqli_real_escape_string($db,$_POST['username']);
         $pass =mysqli_real_escape_string($db,$_POST['password']);
         $email =mysqli_real_escape_string($db,$_POST['email']);
         $password = md5($pass);
-        $query = "INSERT INTO user (id, username, passcode, email) VALUES('$id','$username', '$password', '$email')";
+        $query = "INSERT INTO user (username, passcode, email) VALUES('$username', '$password', '$email')";
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $query = NULL;
+        }
+		if ($username=='admin') 	{
+         $query = NULL;
         }	
         $result = mysqli_query($db, $query);
 
         if($result) {
-            function display_error() {
 			      $error_display = <<<ENTRY_DISPLAY
 				   <div class="container">
                     <div class="alert alert-success alert-dismissable fade in">
@@ -52,13 +50,11 @@ if ($response != null && $response->success) {
                     </div>
                 </div>
 ENTRY_DISPLAY;
-					return $error_display;	
-			}
-			echo display_error();
+	
+			echo $error_display;
         } 
 		else
 			{
-			function display_error() {
 			      $error_display = <<<ENTRY_DISPLAY
 				   <div class="container">
                     <div class="alert alert-danger alert-dismissable fade in">
@@ -67,13 +63,11 @@ ENTRY_DISPLAY;
                     </div>
                 </div>
 ENTRY_DISPLAY;
-					return $error_display;	
-			}
-			echo display_error();
+
+			echo $error_display;
         }
     }
 } else {
-	function display_error() {
 			      $error_display = <<<ENTRY_DISPLAY
                   <div class="container">
                     <div class="alert alert-warning alert-dismissable fade in">
@@ -83,9 +77,7 @@ ENTRY_DISPLAY;
                 </div>
                   
 ENTRY_DISPLAY;
-					return $error_display;	
-			}
-			echo display_error();
+			echo $error_display;
 			mysql_error();
 }
 ?>
@@ -134,7 +126,7 @@ ENTRY_DISPLAY;
 							<ul class="dropdown-menu">
 								<li><a tabindex="-1" href="cal-noad.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a href="leagueoflegends_live.html" tabindex="-1" href="#">Na żywo</a></li>
+								<li><a href="leagueoflegends_live.php" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>

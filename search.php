@@ -48,7 +48,7 @@ error_reporting(E_ERROR);
 							<ul class="dropdown-menu">
 								<li><a tabindex="-1" href="cal-noad.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="leagueoflegends_live.html">Na żywo</a></li>
+								<li><a tabindex="-1" href="leagueoflegends_live.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>

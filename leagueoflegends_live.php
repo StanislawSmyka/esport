@@ -1,12 +1,8 @@
-<?php
-//streamy itp.
-include('lock.php');
-
-?>
-
 <!DOCTYPE html>
+<?php
+include "config.php";
+?>
 <html lang="en">
-
 <head>
 
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -36,7 +32,7 @@ include('lock.php');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">
+                <a class="navbar-brand" href="index-nolog.php">
                     <img src="images/esports.jpeg" alt="">
                 </a>
             </div>
@@ -46,7 +42,7 @@ include('lock.php');
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-user.php">Kalendarz rozgrywek</a></li>
+								<li><a tabindex="-1" href="cal-noad.php">Kalendarz rozgrywek</a></li>
 								<li class="divider"></li>
 								<li><a href="leagueoflegends_live.php" tabindex="-1" href="#">Na żywo</a></li>
 								<li class="divider"></li>
@@ -86,7 +82,7 @@ include('lock.php');
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
                     <li>
-						<form class="navbar-form" action="./searchuser.php" method="get">
+						<form class="navbar-form" action="./search.php" method="get">
 							<div class="input-group">
 								<input type="text" size="15" class="form-control" name="search">
 								<div class="input-group-btn">
@@ -96,15 +92,7 @@ include('lock.php');
 						</form>
 					</li>
 					<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><?php echo $login_session; ?>
-                                <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a tabindex="-1" a href="cpass.php">Zmiana hasła</a></li>
-								<li class="divider"></li>
-								<li><a tabindex="-1" a href="cmail.php">Zmiana e-mail</a></li>
-								<li class="divider"></li>
-								<li><a tabindex="-1" a href="logout.php">Wyloguj</a></li>
-							</ul>
+							<a href="login.php">Zaloguj się</a>
 					</li>
 				</ul>
             </div>
@@ -116,16 +104,26 @@ include('lock.php');
     <!-- tresc strony -->
     <div class="container">
         <div class="no-gutter row">
+		<?php
+		$results = mysqli_query($db, "SELECT * FROM streams Where game='League of Legends' ");
+					while($row = mysqli_fetch_array($results))
+					{
+					$channelname = stripslashes($row['channelname']);
+						      $stream = <<<ENTRY_DISPLAY
             <div class="col-md-9">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe src="https://player.twitch.tv/?channel=riotgames" allowfullscreen="allowfullscreen" frameborder="0" scrolling="no"></iframe>
+                    <iframe src="https://player.twitch.tv/?channel='$channelname'" allowfullscreen="allowfullscreen" frameborder="0" scrolling="no"></iframe>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="embed-responsive embed-responsive-custom">
-                <iframe src="https://www.twitch.tv/riotgames/chat?popout=" frameborder="0"></iframe>
+                  <iframe src="https://www.twitch.tv/$channelname/chat?popout=" frameborder="0"></iframe>
                 </div>
             </div>
+ENTRY_DISPLAY;
+					}
+echo $stream;
+			?>
         </div>
     </div>
     <!-- /.container -->

@@ -153,33 +153,13 @@ echo $error;
                         </div>
                     </div>
                     
-                    <div id="lol">
-                        <button type="submit" class="btn btn-info lol btn-block" value="submit">League of Legends</button>
+                    <div id="stream">
+                        <button type="submit" class="btn btn-info game btn-block" value="submit">League of Legends</button>
+                        <button type="submit" class="btn btn-info game btn-block" value="submit">Hearthstone</button>
+                        <button type="submit" class="btn btn-info game btn-block" value="submit">CS:GO</button>
+                        <button type="submit" class="btn btn-info game btn-block" value="submit">Heroes of the Storm</button>
                         <div class="controls">
-                            <label>Podaj nazwę stream:</label>
-                            <input type="text" name="stream" class="form-control"/>
-                        </div>
-                    </div>
-                    <hr/>
-                    <div id="hs">
-                        <button type="submit" class="btn btn-info hs btn-block" value="submit">Hearthstone</button>
-                        <div class="controls">
-                            <label>Podaj nazwę stream:</label>
-                            <input type="text" name="stream" class="form-control"/>
-                        </div>
-                    </div>
-                    <hr/>
-                    <div id="csgo">
-                        <button type="submit" class="btn btn-info csgo btn-block" value="submit">CS:GO</button>
-                        <div class="controls">
-                            <label>Podaj nazwę stream:</label>
-                            <input type="text" name="stream" class="form-control"/>
-                        </div>           
-                    </div>
-                    <hr/>
-                    <div id="hots">
-                        <button type="submit" class="btn btn-info hots btn-block" value="submit">Heroes of the Storm</button>
-                        <div class="controls">
+                            <hr/>
                             <label>Podaj nazwę stream:</label>
                             <input type="text" name="stream" class="form-control"/>
                         </div>

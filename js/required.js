@@ -10,12 +10,3 @@ $(function(){
     });
   });
 });
-
-$('#stream div').hide();
-$('.game').click(function(e){
-        e.preventDefault();
-        $('#stream div').slideToggle();
-        $(this).toggleClass('active');
-        $('.game').removeClass("active");
-        $(this).addClass("active");
-});

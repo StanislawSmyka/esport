@@ -142,28 +142,50 @@ echo $error;
     <!-- tresc strony -->
  <div class="container">
         <div class="row">
-			<h1 class="page-header">Zmień adres e-mail</h1>
+			<h1 class="page-header">Zmień live stream</h1>
             <div class="col-lg-4">
+                
                 <form action="" method="post">
-				<div class="form-group">
-					<div class="controls">
-						<label>Podaj hasło:</label>
-						<input type="password" name="pass" class="form-control"/>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="controls">
-						<label>Podaj nazwe gry:</label>
-						<input type="text" name="game" class="form-control"/>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="controls">
-						<label>Podaj nazwe stream:</label>
-						<input type="text" name="stream" class="form-control"/>
-					</div>
-				</div>
-				<button type="submit" class="btn btn-default" value="submit">Wyślij</button>
+                    <div class="form-group">
+                        <div class="controls">
+                            <label>Podaj hasło:</label>
+                            <input type="password" name="pass" class="form-control"/>
+                        </div>
+                    </div>
+                    
+                    <div id="lol">
+                        <button type="submit" class="btn btn-info lol btn-block" value="submit">League of Legends</button>
+                        <div class="controls">
+                            <label>Podaj nazwę stream:</label>
+                            <input type="text" name="stream" class="form-control"/>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div id="hs">
+                        <button type="submit" class="btn btn-info hs btn-block" value="submit">Hearthstone</button>
+                        <div class="controls">
+                            <label>Podaj nazwę stream:</label>
+                            <input type="text" name="stream" class="form-control"/>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div id="csgo">
+                        <button type="submit" class="btn btn-info csgo btn-block" value="submit">CS:GO</button>
+                        <div class="controls">
+                            <label>Podaj nazwę stream:</label>
+                            <input type="text" name="stream" class="form-control"/>
+                        </div>           
+                    </div>
+                    <hr/>
+                    <div id="hots">
+                        <button type="submit" class="btn btn-info hots btn-block" value="submit">Heroes of the Storm</button>
+                        <div class="controls">
+                            <label>Podaj nazwę stream:</label>
+                            <input type="text" name="stream" class="form-control"/>
+                        </div>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-default" value="submit">Wyślij</button>
                 </form>
             </div> 
     </div>

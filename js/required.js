@@ -10,3 +10,31 @@ $(function(){
     });
   });
 });
+
+$('#lol div').hide();
+$('.lol').click(function(e){
+        e.preventDefault();
+        $('#lol div').slideToggle();
+        $(this).toggleClass('active');
+});
+
+$('#hs div').hide();
+$('.hs').click(function(e){
+        e.preventDefault();
+        $('#hs div').slideToggle();
+        $(this).toggleClass('active');
+});
+
+$('#csgo div').hide();
+$('.csgo').click(function(e){
+        e.preventDefault();
+        $('#csgo div').slideToggle();
+        $(this).toggleClass('active');
+});
+
+$('#hots div').hide();
+$('.hots').click(function(e){
+        e.preventDefault();
+        $('#hots div').slideToggle();
+        $(this).toggleClass('active');
+});

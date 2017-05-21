@@ -3,9 +3,9 @@ error_reporting(E_ERROR);
 include('lock-ad.php');
 
 $results = mysqli_query($db,"SELECT COUNT(*) FROM info");
-$get_total_rows = mysqli_fetch_array($results); //total records
+$get_total_rows = mysqli_fetch_array($results); 
 
-//break total records into pages
+
 $pages = ceil($get_total_rows[0]/$item_per_page);
 ?>
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
     <script src="js/required.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#results").load("pagination-ad.php");  //initial page number to load
+            $("#results").load("pagination-ad.php");
             $(".pagination").bootpag({
                 total: <?php echo $pages; ?>,
                 page: 1,
@@ -219,7 +219,6 @@ echo $slide;
 									include_once ('functions.php');
 									 $obj = new commentsadmin();
 
-									  /* CHANGE THESE SETTINGS FOR YOUR OWN DATABASE */
 									  $obj->host = 'localhost';
 									  $obj->username = 'test';
 									  $obj->password = 'pass';

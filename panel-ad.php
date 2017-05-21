@@ -4,9 +4,8 @@ error_reporting(E_ERROR);
 include('lock-ad.php');
 
 $results = mysqli_query($db,"SELECT COUNT(*) FROM info");
-$get_total_rows = mysqli_fetch_array($results); //total records
+$get_total_rows = mysqli_fetch_array($results);
 
-//break total records into pages
 $pages = ceil($get_total_rows[0]/$item_per_page);
 ?>
 <!DOCTYPE html>

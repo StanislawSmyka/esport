@@ -1,5 +1,5 @@
 <?php
-//streamy itp.
+//streamy heroes of the storm
 include('lock.php');
 
 ?>

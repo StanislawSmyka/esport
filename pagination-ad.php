@@ -1,22 +1,20 @@
 <?php
 error_reporting(E_ERROR);
-include("config-ad.php"); //include config file
+include("config-ad.php");
 
-//sanitize post value
 if(isset($_POST["page"])){
 	$page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH);
-	if(!is_numeric($page_number)){die('Invalid page number!');} //incase of invalid page number
+	if(!is_numeric($page_number)){die('Invalid page number!');} 
 }else{
 	$page_number = 1;
 }
 
-//get current starting point of records
 $position = (($page_number-1) * $item_per_page);
 
-//Limit our results within a specified range. 
+
 $results = mysqli_query($db, "SELECT * FROM info ORDER BY id DESC LIMIT $position, $item_per_page");
 
-//output results from database
+
 
 echo '<ul class="page_result">';
 

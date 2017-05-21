@@ -1,11 +1,10 @@
 <?php
-//db details
+
 $dbHost = 'localhost';
 $dbUsername = 'admin';
 $dbPassword = 'pass';
 $dbName = 'db';
 
-//Connect and select the database
 $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
 
 if ($db->connect_error) {

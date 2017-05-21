@@ -133,14 +133,18 @@ endswitch;
     <!-- tresc strony -->
  <div class="container">
         <div class="row">
+                <div class="alert alert-warning alert-dismissable fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <span class="glyphicon glyphicon-alert"></span>
+                    <strong>Uwaga!</strong> Pamiętaj aby w linku zmienić <strong>"watch?v="</strong> na <strong>"embed/"</strong>
+                </div>
 			<h1 class="page-header">Zmień linki na stronie głównej</h1>
             <div class="col-lg-4">
-                
                 <form action="" method="post">
                     <div class="form-group">
                         <div class="controls">
                             <label>Podaj link youtube:</label>
-                            <input type="text" name="link" class="form-control"/>
+                            <input type="url" name="link" class="form-control"/>
                         </div>
                         <div class="controls">
                             <hr/>

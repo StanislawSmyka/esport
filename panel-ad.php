@@ -142,7 +142,7 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
 							<li><a href="cpass-ad.php">Zmień hasło</a></li>
 							<li><a href="cmail-ad.php">Zmień e-mail</a></li>
 							<li><a href="cstream-ad.php">Zmień stream</a></li>
-							<li><a href="clink-ad.php">Zmień linki na głownej stronie</a></li>
+							<li><a href="clink-ad.php">Zmień video na stronie głównej</a></li>
 							</ul>
 						</div>
 				</div>

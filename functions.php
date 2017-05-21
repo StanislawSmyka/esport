@@ -458,21 +458,8 @@ ENTRY_DISPLAY;
     mysql_connect($this->host,$this->username,$this->password) or die("Could not connect. " . mysql_error());
     mysql_select_db($this->table) or die("Could not select database. " . mysql_error());
 
-    return $this->buildDB();
+    return $this->display_public();
   }
-
-  private function buildDB() {
-    $sql = <<<MySQL_QUERY
-CREATE TABLE IF NOT EXISTS news (
-title		VARCHAR(150),
-bodytext	TEXT,
-created		VARCHAR(100)
-)
-MySQL_QUERY;
-
-    return mysql_query($sql);
-  }
-
 }
 
 //zbiór funkcji dla użytkownika
@@ -527,21 +514,8 @@ ENTRY_DISPLAY;
     mysql_connect($this->host,$this->username,$this->password) or die("Could not connect. " . mysql_error());
     mysql_select_db($this->table) or die("Could not select database. " . mysql_error());
 
-    return $this->buildDB();
+    return $this->display_public();
   }
-
-  private function buildDB() {
-    $sql = <<<MySQL_QUERY
-CREATE TABLE IF NOT EXISTS news (
-title		VARCHAR(150),
-bodytext	TEXT,
-created		VARCHAR(100)
-)
-MySQL_QUERY;
-
-    return mysql_query($sql);
-  }
-
 }
 
 //zbiór funkcji dla admina
@@ -596,19 +570,7 @@ ENTRY_DISPLAY;
     mysql_connect($this->host,$this->username,$this->password) or die("Could not connect. " . mysql_error());
     mysql_select_db($this->table) or die("Could not select database. " . mysql_error());
 
-    return $this->buildDB();
-  }
-
-  private function buildDB() {
-    $sql = <<<MySQL_QUERY
-CREATE TABLE IF NOT EXISTS news (
-title		VARCHAR(150),
-bodytext	TEXT,
-created		VARCHAR(100)
-)
-MySQL_QUERY;
-
-    return mysql_query($sql);
+    return $this->display_public();
   }
 
 }
@@ -707,19 +669,7 @@ ADMIN_FORM;
     mysql_connect($this->host,$this->username,$this->password) or die("Could not connect. " . mysql_error());
     mysql_select_db($this->table) or die("Could not select database. " . mysql_error());
 
-    return $this->buildDB();
+    return $this->display_public();
   }
-
-  private function buildDB() {
-    $sql = <<<MySQL_QUERY
-CREATE TABLE IF NOT EXISTS news (
-title		VARCHAR(150),
-bodytext	TEXT,
-created		VARCHAR(100)
-)
-MySQL_QUERY;
-    return mysql_query($sql);
-  }
-
 }
 ?>

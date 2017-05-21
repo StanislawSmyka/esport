@@ -64,9 +64,7 @@ header("location: readmore-user.php?idp=$idp&count=$count");
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">League of Legends<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-lol-user.php">Kalendarz rozgrywek</a></li>
-								<li class="divider"></li>
-								<li><a href="leagueoflegends_live-user.php" tabindex="-1" href="#">Na żywo</a></li>
+								<li><a tabindex="-1" href="leagueoflegends_live-user.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://euw.leagueoflegends.com/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
@@ -74,8 +72,6 @@ header("location: readmore-user.php?idp=$idp&count=$count");
                     <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Hearthstone<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-hs-user.php">Kalendarz rozgrywek</a></li>
-								<li class="divider"></li>
 								<li><a tabindex="-1" href="hearthstone_live-user.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://eu.battle.net/hearthstone/pl/" target="blank">Oficjalna strona gry</a></li>
@@ -84,8 +80,6 @@ header("location: readmore-user.php?idp=$idp&count=$count");
 					<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">CS:GO<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-csgo-user.php">Kalendarz rozgrywek</a></li>
-								<li class="divider"></li>
 								<li><a tabindex="-1" href="csgo_live-user.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="blog.counter-strike.net/" target="blank">Oficjalna strona gry</a></li>
@@ -94,19 +88,20 @@ header("location: readmore-user.php?idp=$idp&count=$count");
 					<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Heroes of the Storm<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="cal-hots-user">Kalendarz rozgrywek</a></li>
-								<li class="divider"></li>
 								<li><a tabindex="-1" href="hots_live-user.php">Na żywo</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="http://eu.battle.net/heroes/pl/" target="blank">Oficjalna strona gry</a></li>
 							</ul>
+					</li>
+                    <li class="dropdown">
+                        <a href="cal-user.php">Kalendarz rozgrywek</a>
 					</li>					
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
                     <li>
 						<form class="navbar-form" action="./searchuser.php" method="get">
 							<div class="input-group">
-								<input type="text" size="15" class="form-control" name="search">
+								<input type="text" size="10" class="form-control" name="search">
 								<div class="input-group-btn">
 									<button class="btn btn-default" type="submit" value="Szukaj">Szukaj</button>
 								</div>

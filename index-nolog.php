@@ -101,7 +101,7 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
 							</ul>
 					</li>	
                     <li class="dropdown">
-                        <a href="cal-noad.php">Kalendarz rozgrywek</a>
+                        <a href="cal.php">Kalendarz rozgrywek</a>
 					</li>
                 </ul>
 				<ul class="nav navbar-nav navbar-right">

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 20 Maj 2017, 22:17
+-- Czas generowania: 21 Maj 2017, 16:15
 -- Wersja serwera: 10.1.16-MariaDB
 -- Wersja PHP: 5.6.24
 
@@ -60,13 +60,11 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`number`, `id`, `user`, `comment`, `created`, `ip`) VALUES
-(31, 1, 'TEST', 'test', '2017-04-11', '::1'),
 (32, 8, 'admin', 'elo', '2017-04-11', '::1'),
-(33, 1, 'test', 'NIE JESTEÅš PRAWDZIWYM TESTEM OSZUÅšCIE', '2017-04-11', '::1'),
 (37, 8, 'admin', 'dfsfsf', '2017-04-12', '::1'),
 (38, 1, 'dssad', 'asdsadsdasad', '2017-04-18', '::1'),
 (39, 8, 'sdf', 'sdfsfdsfd', '2017-04-18', '::1'),
-(41, 1, 'admin', '...', '2017-04-19', '::1');
+(42, 1, 'admin', 'addas', '2017-05-21', '::1');
 
 -- --------------------------------------------------------
 
@@ -110,7 +108,7 @@ CREATE TABLE `info` (
 --
 
 INSERT INTO `info` (`id`, `title`, `bodytext`, `created`, `count`) VALUES
-(1, 'Congratulations to the 2016 Hearthstone World Champion: Pavel!', '2016 saw the introduction of the Hearthstone Championship Tour, Standard format, and a much higher level of competition. We saw many familiar faces, long-time competitive players come into the limelight, and innovative fresh faces burst into the scene. Ultimately, Pavel managed to prepare and pilot his decks the best to navigate through the tough sea of competitors and be our 2016 Hearthstone World Champion!', '2017-01-04', 4),
+(1, 'Congratulations to the 2016 Hearthstone World Champion: Pavel!', '2016 saw the introduction of the Hearthstone Championship Tour, Standard format, and a much higher level of competition. We saw many familiar faces, long-time competitive players come into the limelight, and innovative fresh faces burst into the scene. Ultimately, Pavel managed to prepare and pilot his decks the best to navigate through the tough sea of competitors and be our 2016 Hearthstone World Champion!', '2017-01-04', 2),
 (8, 'hello', 'world', '2017-04-11', 3),
 (14, 'test', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a lacus ipsum. Nulla in ligula eu nibh mattis auctor a ac mauris. In massa odio, lobortis quis nulla eu, mattis luctus sapien. Curabitur porta lorem quis nibh ornare, non tincidunt enim varius. Phasellus sollicitudin lectus nisl, eu malesuada mauris venenatis sed. Quisque arcu sem, mollis et dolor at, venenatis dapibus magna. Nunc sit amet lacus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent odio velit, egestas ut feugiat vitae, vestibulum at nunc. Nam non convallis ligula. Donec ut viverra diam. Duis ut urna eu enim mattis sollicitudin et elementum mi.\r\n\r\nDonec porttitor luctus consectetur. In hac habitasse platea dictumst. Nunc malesuada neque leo, et volutpat felis malesuada non. Vestibulum ut est nec mauris dignissim elementum. Vestibulum sed enim mauris. Etiam convallis lobortis vestibulum. Morbi semper sit amet enim sed dignissim. Etiam laoreet congue enim, sit amet mattis enim interdum sit amet. Curabitur sagittis magna et ligula auctor elementum. Vivamus pretium, eros ut posuere condimentum, mi dolor finibus nisi, id lobortis felis massa vel nibh. Duis sollicitudin vulputate mollis. Ut fermentum, turpis eu consectetur tempus, ipsum diam pulvinar tellus, ac blandit nibh nisl cursus massa. Ut placerat sem eget purus faucibus malesuada. Vestibulum maximus lacus imperdiet purus vulputate, non mattis metus auctor. Aenean ante neque, ornare quis euismod et, pharetra eu justo.\r\n\r\nAenean facilisis, nibh in mattis iaculis, lectus elit elementum justo, a convallis lorem ligula non augue. Curabitur quis nisi lacus. Duis vehicula maximus ex, non rutrum neque sagittis ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec convallis semper erat, id ullamcorper nisl tincidunt id. Aenean at ex nec magna posuere faucibus nec vel quam. Suspendisse iaculis risus convallis fringilla fringilla. Fusce vitae imperdiet lectus. Vestibulum sagittis, urna vitae tempus feugiat, od', '2017-04-19', 0),
 (15, 'Test 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a lacus ipsum. Nulla in ligula eu nibh mattis auctor a ac mauris. In massa odio, lobortis quis nulla eu, mattis luctus sapien. Curabitur porta lorem quis nibh ornare, non tincidunt enim varius. Phasellus sollicitudin lectus nisl, eu malesuada mauris venenatis sed. Quisque arcu sem, mollis et dolor at, venenatis dapibus magna. Nunc sit amet lacus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent odio velit, egestas ut feugiat vitae, vestibulum at nunc. Nam non convallis ligula. Donec ut viverra diam. Duis ut urna eu enim mattis sollicitudin et elementum mi.\r\n\r\nDonec porttitor luctus consectetur. In hac habitasse platea dictumst. Nunc malesuada neque leo, et volutpat felis malesuada non. Vestibulum ut est nec mauris dignissim elementum. Vestibulum sed enim mauris. Etiam convallis lobortis vestibulum. Morbi semper sit amet enim sed dignissim. Etiam laoreet congue enim, sit amet mattis enim interdum sit amet. Curabitur sagittis magna et ligula auctor elementum. Vivamus pretium, eros ut posuere condimentum, mi dolor finibus nisi, id lobortis felis massa vel nibh. Duis sollicitudin vulputate mollis. Ut fermentum, turpis eu consectetur tempus, ipsum diam pulvinar tellus, ac blandit nibh nisl cursus massa. Ut placerat sem eget purus faucibus malesuada. Vestibulum maximus lacus imperdiet purus vulputate, non mattis metus auctor. Aenean ante neque, ornare quis euismod et, pharetra eu justo.\r\n\r\nAenean facilisis, nibh in mattis iaculis, lectus elit elementum justo, a convallis lorem ligula non augue. Curabitur quis nisi lacus. Duis vehicula maximus ex, non rutrum neque sagittis ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec convallis semper erat, id ullamcorper nisl tincidunt id. Aenean at ex nec magna posuere faucibus nec vel quam. Suspendisse iaculis risus convallis fringilla fringilla. Fusce vitae imperdiet lectus. Vestibulum sagittis, urna vitae tempus feugiat, od', '2017-04-19', 0),
@@ -235,7 +233,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT dla tabeli `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT dla tabeli `events`
 --

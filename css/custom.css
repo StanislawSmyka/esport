@@ -79,11 +79,6 @@ li [class^="pull-right"] {
   border-radius: 0px !important;
 }
 
-.nav-pills > .active > a > .badge {
-  color: #94c1e8;
-  background-color: #fff;
-}
-
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
@@ -103,9 +98,6 @@ li [class^="pull-right"] {
 	list-style: none;
 	padding: 0px;
 	text-align: center;
-}
-.page_result{
-	padding: 0px;
 }
 
 .embed-responsive-custom {

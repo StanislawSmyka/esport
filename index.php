@@ -151,7 +151,7 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
 					$linkcsgo = stripslashes($row['link_csgo']);
 					$linkhots = stripslashes($row['link_hots']);
 						      $slide = <<<ENTRY_DISPLAY
-                            <ul class="nav nav-pills" role="tablist" id="myTab">
+                            <ul class="nav nav-pills" role="tablist">
                                 <li role="presentation" class="active">
                                     <a href="#lol" role="tab" data-toggle="tab">League of Legends</a>
                                 </li>
@@ -213,7 +213,7 @@ echo $slide;
       		</div><!--koniec najnowszych-->
       		
       		<!-- poczatek najpopularniejszych-->
-      		<div class="col-md-3" id="content">
+      		<div class="col-md-3">
             	<div class="panel">
 					<div class="panel-heading" style="background-color:#111">Najpopularniejsze wiadomości</div>   
 						<div class="panel-body" style="background-color:#E0E0E0">

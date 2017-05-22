@@ -16,7 +16,7 @@ $newpass=mysqli_real_escape_string($db,$_POST['newpass']);
 $newpass=md5($newpass);
 $query = "UPDATE user SET passcode='$newpass' WHERE username='$login_session'";
 $result = mysqli_query($db, $query);
-header("location: panel.php");
+header("location: index.php");
 }
 else 
 {

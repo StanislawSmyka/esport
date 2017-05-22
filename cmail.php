@@ -29,7 +29,7 @@ echo $error;
 			else
 			{
 			$result = mysqli_query($db, $query);
-			header("location: panel.php");
+			header("location: index.php");
 			}	
 	}
 else 

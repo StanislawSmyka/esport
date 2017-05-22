@@ -2,14 +2,10 @@
 //panel do usuwania postów
 include('lock-ad.php');
 error_reporting(E_ERROR);
-session_start();
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 { 
-
 $myid=mysqli_real_escape_string($db,$_POST['id']); 
-$sql="SELECT id FROM info WHERE id='$myid'";
-echo $myid;
 $sql="DELETE from info WHERE id='$myid'";
 $result = mysqli_query($db, $sql);
 $sql1="DELETE from comments WHERE id='$myid'";

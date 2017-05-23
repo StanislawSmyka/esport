@@ -83,7 +83,7 @@ error_reporting(E_ERROR);
                     <li>
 						<form class="navbar-form" action="./searchuser.php" method="get">
 							<div class="input-group">
-								<input type="text" size="10" class="form-control" name="search">
+								<input type="text" size="10" class="form-control" name="search" value="<?php echo $_GET["search"]; ?>">
 								<div class="input-group-btn">
 									<button class="btn btn-default" type="submit" value="Szukaj">Szukaj</button>
 								</div>
@@ -141,7 +141,7 @@ error_reporting(E_ERROR);
                                                 $title=$row['title'];
                                                 $bodytext=$row['bodytext'];
 												$count=$row['count'];
-													$entry_display .= <<<ENTRY_DISPLAY
+													$entry_display = <<<ENTRY_DISPLAY
                                                        <h2>$title</h2>
 														<div class="latest-wrapping">$bodytext</div>
 														 <a href="readmore-user.php?idp=$id&count=$count">... więcej</a>

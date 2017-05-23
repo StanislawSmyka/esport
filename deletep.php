@@ -136,7 +136,7 @@ header("location: deletep.php");
             <div class="panel-heading" style="background-color:#555">Lista postów</div> 
             <div class="panel-body">
                 <div class="row">
-				<div class="col-md-9">
+				<div class="col-md-12">
 				        <?php
 									
                         include_once ('functions.php');

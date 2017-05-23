@@ -14,7 +14,7 @@ $position = (($page_number-1) * $item_per_page);
 $results = mysqli_query($db, "SELECT * FROM info ORDER BY id DESC LIMIT $position, $item_per_page");
 
 
-echo '<ul class="page_result">';
+echo '<div>';
 
 while($row = mysqli_fetch_array($results))
     
@@ -26,7 +26,7 @@ while($row = mysqli_fetch_array($results))
 		$count = stripslashes($row['count']);
         $entry_display .= <<<ENTRY_DISPLAY
         <h2>$title</h2>
-        <div class="popular-wrapping">$bodytext</div>
+        <div class="latest-wrapping">$bodytext</div>
         
     	<a href="readmore-user.php?idp=$id&count=$count">... więcej</a>
         
@@ -38,6 +38,6 @@ while($row = mysqli_fetch_array($results))
 ENTRY_DISPLAY;
     }                            
 echo $entry_display;
-echo '</ul>';
+echo '</div>';
 ?>
 

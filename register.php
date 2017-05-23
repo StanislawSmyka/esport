@@ -59,7 +59,7 @@ ENTRY_DISPLAY;
 				   <div class="container">
                     <div class="alert alert-danger alert-dismissable fade in">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>Błąd!</strong> Błędny e-mail lub użytkownik o takiej nazwie już istnieje!
+                        <strong>Błąd!</strong> Użytkownik o takiej nazwie już istnieje!
                     </div>
                 </div>
 ENTRY_DISPLAY;

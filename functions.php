@@ -596,7 +596,7 @@ class CMSdelete {
 		$id = stripslashes($a['id']);
         $entry_display .= <<<ENTRY_DISPLAY
 
-    <div class="post">
+    <div>
     	<h2>
     	Tytul: $title
     	</h2>

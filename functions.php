@@ -39,7 +39,6 @@ function getCalender($year = '',$month = '')
 		?>
         </h2>
 		<div id="event_list" class="none"></div>
-        <!--For Add Event-->
         <div id="event_add" class="none">
         	<p>Data wydarzenia: <span id="eventDateView"></span></p>
             <p><b>Nazwa wydarzenia: </b><input type="text" id="eventTitle" value=""/></p>
@@ -63,15 +62,15 @@ function getCalender($year = '',$month = '')
 				$dayCount = 1; 
 				for($cb=1;$cb<=$boxDisplay;$cb++){
 					if(($cb >= $currentMonthFirstDay+1 || $currentMonthFirstDay == 7) && $cb <= ($totalDaysOfMonthDisplay)){
-						//Current date
+						//obecna data
 						$currentDate = $dateYear.'-'.$dateMonth.'-'.$dayCount;
 						$eventNum = 0;
-						//Include db configuration file
+						//stworzenie połączenia z bazą danych
 						include 'dbConfig.php';
-						//Get number of events based on the current date
+						//zliczanie liczby wydarzeń
 						$result = $db->query("SELECT title FROM events WHERE date = '".$currentDate."' AND status = 1");
 						$eventNum = $result->num_rows;
-						//Define date cell color
+						//określenie koloru komórek w kalendarzu
 						if(strtotime($currentDate) == strtotime(date("Y-m-d"))){
 							echo '<li date="'.$currentDate.'" class="grey date_cell">';
 						}elseif($eventNum > 0){
@@ -79,17 +78,17 @@ function getCalender($year = '',$month = '')
 						}else{
 							echo '<li date="'.$currentDate.'" class="date_cell">';
 						}
-						//Date cell
+						//dane komórki
 						echo '<span>';
 						echo $dayCount;
 						echo '</span>';
 						
-						//Hover event popup
+						//wydarzenia po najechaniu myszką
 						echo '<div id="date_popup_'.$currentDate.'" class="date_popup_wrap none">';
 						echo '<div class="date_window">';
 						echo '<div class="popup_event">Wydarzenia ('.$eventNum.')</div>';
 						echo ($eventNum > 0)?'<a href="javascript:;" onclick="getEvents(\''.$currentDate.'\');">Zobacz szczegóły</a><br/>':'';
-						//For Add Event
+						//dodanie wydarzenia
 						echo '<a href="javascript:;" onclick="addEvent(\''.$currentDate.'\');">Dodaj wydarzenie</a>';
 						echo '</div></div>';
 						
@@ -127,14 +126,12 @@ function getCalender($year = '',$month = '')
 				}
 			});
 		}
-		//For Add Event
 		function addEvent(date){
 			$('#eventDate').val(date);
 			$('#eventDateView').html(date);
 			$('#event_list').slideUp('fast');
 			$('#event_add').slideDown('fast');
 		}
-		//For Add Event
 		$(document).ready(function(){
 			$('#addEventBtn').on('click',function(){
 				var date = $('#eventDate').val();
@@ -179,43 +176,11 @@ function getCalender($year = '',$month = '')
 	</script>
 <?php
 }
-
-/*
- * Get months options list.
- */
-function getAllMonths($selected = ''){
-	$options = '';
-	for($i=1;$i<=12;$i++)
-	{
-		$value = ($i < 01)?'0'.$i:$i;
-		$selectedOpt = ($value == $selected)?'selected':'';
-		$options .= '<option value="'.$value.'" '.$selectedOpt.' >'.date("F", mktime(0, 0, 0, $i+1, 0, 0)).'</option>';
-	}
-	return $options;
-}
-
-/*
- * Get years options list.
- */
-function getYearList($selected = ''){
-	$options = '';
-	for($i=2015;$i<=2025;$i++)
-	{
-		$selectedOpt = ($i == $selected)?'selected':'';
-		$options .= '<option value="'.$i.'" '.$selectedOpt.' >'.$i.'</option>';
-	}
-	return $options;
-}
-
-/*
- * Get events by date
- */
 function getEvents($date = ''){
-	//Include db configuration file
 	include 'dbConfig.php';
 	$eventListHTML = '';
 	$date = $date?$date:date("Y-m-d");
-	//Get events based on the current date
+	//Pobierz wydarzenia na bazie aktualnej daty
 	$result = $db->query("SELECT title FROM events WHERE date = '".$date."' AND status = 1");
 	if($result->num_rows > 0){
 		$eventListHTML = '<h2>Wydarzenia w '.date("l, d M Y",strtotime($date)).'</h2>';
@@ -227,15 +192,10 @@ function getEvents($date = ''){
 	}
 	echo $eventListHTML;
 }
-
-/*
- * Add event to date
- */
 function addEvent($date,$title){
-	//Include db configuration file
 	include 'dbConfig.php';
 	$currentDate = date("Y-m-d H:i:s");
-	//Insert the event data into database
+	//Umieść dane wydarzenia w bazie danych
 	$insert = $db->query("INSERT INTO events (title,date,created,modified) VALUES ('".$title."','".$date."','".$currentDate."','".$currentDate."')");
 	if($insert){
 		echo'ok';
